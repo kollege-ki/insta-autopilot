@@ -1,0 +1,2 @@
+Lizenzfreie MP3s hier ablegen (z. B. aus der YouTube Audio Library oder Pixabay Music).
+Die Pipeline wählt pro Reel zufällig einen Track und blendet ihn am Ende aus.
