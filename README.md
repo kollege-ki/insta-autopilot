@@ -40,12 +40,14 @@ Neuen Account anlegen → *Einstellungen → Kontotyp* → **Creator- oder Busin
 
 ### 4. Instagram-Zugang (Meta)
 1. [developers.facebook.com](https://developers.facebook.com) → *Meine Apps → App erstellen* →
-   Anwendungsfall **„Instagram API mit Instagram-Login“** (Instagram API with Instagram Login).
-2. In der App unter *Instagram → API-Einrichtung*: deinen Instagram-Account hinzufügen
-   (er muss in der App als Tester/Rolle eingetragen sein, dann reicht der Entwicklungsmodus für dein eigenes Konto).
-3. Berechtigungen: `instagram_business_basic`, `instagram_business_content_publish`,
-   `instagram_business_manage_insights`.
-4. **Zugangstoken generieren** (langlebig, 60 Tage) und kopieren.
+   Anwendungsfall **„Nachrichten und Inhalte auf Instagram verwalten“**.
+2. *Anwendungsfälle → Anpassen → **API setup with Unified login***.
+   (Neue Apps bekommen seit 2026 nur noch diesen Weg. Er braucht keine Facebook-Seite.)
+3. Berechtigungen für Veröffentlichen und Insights aktivieren.
+4. *App-Rollen → Rollen → Personen hinzufügen → **Instagram-Tester*** → deinen Instagram-Namen eintragen
+   und die Einladung in der Instagram-App annehmen (Einstellungen → Website-Berechtigungen → Apps und Websites).
+5. **Konto hinzufügen** und **Token generieren**. Der Token beginnt mit `EAA` und läuft nicht ab.
+   (Ältere Apps mit Instagram-Login liefern `IG…`-Tokens. Die Pipeline erkennt beides automatisch.)
 
 ### 5. GitHub-Token (Token-Verlängerung + Cockpit-Updates)
 github.com → *Settings → Developer settings → Fine-grained tokens* → neuer Token
@@ -59,7 +61,7 @@ Repo → *Settings → Secrets and variables → Actions → New repository secr
 | `ANTHROPIC_API_KEY` | Claude-Key aus Schritt 3 |
 | `IG_ACCESS_TOKEN` | Instagram-Token aus Schritt 4 |
 | `GH_PAT` | GitHub-Token aus Schritt 5 |
-| `IG_USER_ID` | optional – zeigt dir der Workflow „0 · Verbindung testen“ an |
+| `IG_USER_ID` | empfohlen – zeigt dir der Workflow „0 · Verbindung testen“ an |
 
 ### 7. Anpassen
 In `config.yaml` mindestens `brand.name` und `brand.handle` setzen, Farben nach Geschmack,
@@ -143,7 +145,7 @@ docs/          das Cockpit (index.html)
 | 1 · Content generieren | Sonntag 18:00 | Ideen → Posts → Slides → Freigabe-PR |
 | 2 · Posten | alle 30 Min. tagsüber | postet, wenn der Slot dran ist |
 | 3 · Insights, Statistik & Cockpit | täglich früh | Zahlen holen, auswerten, Cockpit |
-| 4 · Token verlängern | 1. und 15. | Instagram-Token erneuern |
+| 4 · Token verlängern | 1. und 15. | `IG…`-Token erneuern (EAA-Tokens laufen nicht ab) |
 | 5 · Vorlage exportieren | manuell | Verkaufsvorlage als ZIP |
 | 6 · Cockpit aktualisieren | bei Freigabe, Journal-/Config-Änderung | Cockpit sofort neu |
 

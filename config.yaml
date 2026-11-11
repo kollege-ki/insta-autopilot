@@ -112,8 +112,12 @@ posting:
   min_hours_between_posts: 4
 
 instagram:
+  # Instagram-Login (Token beginnt mit IG…)
   api_host: "https://graph.instagram.com"
   api_version: "v23.0"
+  # Unified Login (Token beginnt mit EAA…) – Standard für neue Meta-Apps seit 2026
+  api_host_unified: "https://graph.facebook.com"
+  api_version_unified: "v26.0"
   # Öffentliche Basis-URL für die Bilder. Leer = raw.githubusercontent.com dieses Repos
   # (setzt ein öffentliches Repo voraus).
   public_base_url: ""

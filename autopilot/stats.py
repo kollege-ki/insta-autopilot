@@ -30,7 +30,7 @@ WINDOW = 14  # Tage vor/nach einem Meilenstein
 def snapshot(cfg: dict) -> None:
     from .instagram import Instagram
 
-    me = Instagram(cfg).get("me", fields="followers_count,media_count")
+    me = Instagram(cfg).account_info()
     today = now(cfg).date().isoformat()
     rows = []
     if DAILY_CSV.exists():

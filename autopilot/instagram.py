@@ -1,4 +1,9 @@
-"""Schlanker Client für die Instagram API (mit Instagram-Login)."""
+"""Schlanker Client für die Instagram API.
+
+Unterstützt beide Zugänge, die Meta anbietet – erkannt am Token:
+  IG…   Instagram-Login (ältere Apps)      → graph.instagram.com, Token läuft nach 60 Tagen ab
+  EAA…  Unified Login (neue Apps ab 2026)  → graph.facebook.com, System-User-Token ohne Ablauf
+"""
 from __future__ import annotations
 
 import os
@@ -11,14 +16,62 @@ class InstagramError(RuntimeError):
     pass
 
 
+def is_unified(token: str) -> bool:
+    return token.strip().startswith("EAA")
+
+
 class Instagram:
     def __init__(self, cfg: dict, token: str | None = None, user_id: str | None = None):
         ig = cfg["instagram"]
-        self.base = f"{ig['api_host'].rstrip('/')}/{ig['api_version']}"
         self.token = token or os.environ.get("IG_ACCESS_TOKEN", "").strip()
-        self.user_id = user_id or os.environ.get("IG_USER_ID", "").strip() or "me"
         if not self.token:
             raise SystemExit("Fehlende Umgebungsvariable IG_ACCESS_TOKEN.")
+        self.unified = is_unified(self.token)
+        if self.unified:
+            host = ig.get("api_host_unified", "https://graph.facebook.com")
+            version = ig.get("api_version_unified", "v26.0")
+        else:
+            host, version = ig["api_host"], ig["api_version"]
+        self.base = f"{host.rstrip('/')}/{version}"
+        self._user_id = user_id or os.environ.get("IG_USER_ID", "").strip()
+
+    @property
+    def user_id(self) -> str:
+        """ID des Instagram-Kontos. Beim Instagram-Login reicht „me“, beim Unified
+        Login wird sie einmalig über die Konten ermittelt, die dem Token zugewiesen sind."""
+        if not self._user_id:
+            if not self.unified:
+                self._user_id = "me"
+            else:
+                accounts = self.find_accounts()
+                if not accounts:
+                    raise SystemExit("Kein Instagram-Konto für diesen Token gefunden. In der Meta-App prüfen, "
+                                     "ob @kollege.ki der App zugewiesen ist, oder IG_USER_ID als Secret setzen.")
+                if len(accounts) > 1:
+                    names = ", ".join(f"@{a.get('username')} ({a['id']})" for a in accounts)
+                    raise SystemExit(f"Mehrere Instagram-Konten gefunden: {names}. IG_USER_ID als Secret setzen.")
+                self._user_id = accounts[0]["id"]
+        return self._user_id
+
+    def find_accounts(self) -> list[dict]:
+        """Instagram-Konten, auf die ein Unified-Login-Token Zugriff hat."""
+        found: dict[str, dict] = {}
+        attempts = [
+            ("me/assigned_instagram_accounts", {"fields": "id,username"}, lambda d: d.get("data", [])),
+            ("me/accounts", {"fields": "instagram_business_account{id,username}"},
+             lambda d: [p["instagram_business_account"] for p in d.get("data", []) if p.get("instagram_business_account")]),
+        ]
+        for path, params, extract in attempts:
+            try:
+                for acc in extract(self.get(path, **params)):
+                    if acc.get("id"):
+                        found[acc["id"]] = acc
+            except InstagramError:
+                continue
+        return list(found.values())
+
+    def account_info(self) -> dict:
+        return self.get(self.user_id, fields="id,username,followers_count,media_count")
 
     def _req(self, method: str, path: str, **params):
         params["access_token"] = self.token

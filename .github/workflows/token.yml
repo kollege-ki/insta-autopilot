@@ -21,9 +21,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           python -m autopilot.token_tools refresh "$RUNNER_TEMP/token"
-          echo "::add-mask::$(cat "$RUNNER_TEMP/token")"
-          gh secret set IG_ACCESS_TOKEN --repo "${{ github.repository }}" < "$RUNNER_TEMP/token"
-          rm "$RUNNER_TEMP/token"
+          if [ -f "$RUNNER_TEMP/token" ]; then
+            echo "::add-mask::$(cat "$RUNNER_TEMP/token")"
+            gh secret set IG_ACCESS_TOKEN --repo "${{ github.repository }}" < "$RUNNER_TEMP/token"
+            rm "$RUNNER_TEMP/token"
+          fi
 
   check:
     needs: refresh
