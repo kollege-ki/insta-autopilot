@@ -1,0 +1,62 @@
+{
+  "pillar": "making_of",
+  "format": "experiment",
+  "title": "Das Uhrzeit-Test: 07:30, 12:15 oder 18:30",
+  "slides": [
+    {
+      "headline": "Welche *Uhrzeit* ist die beste? Wir raten nicht.",
+      "body": "Stand 10.11.: 0 Follower, 0 Posts. Ein ehrlicher Startpunkt."
+    },
+    {
+      "headline": "Die Page wechselt die *Uhrzeit* selbst",
+      "body": "Post für Post im Wechsel: 07:30, 12:15, 18:30. GitHub Actions postet zur eingestellten Zeit. Ein Mensch gibt vorher frei."
+    },
+    {
+      "headline": "Gleiche Art von Post, sonst *misst* du Inhalt",
+      "body": "Karussell gegen Reel sagt nichts über die Uhrzeit. Vergleiche nur Posts desselben Typs."
+    },
+    {
+      "headline": "Nur *ein* Faktor ändert sich",
+      "body": "Ändert sich neben der Uhrzeit noch etwas, weißt du nie, was gewirkt hat. Halte den Rest fest:",
+      "box": "Uhrzeit → ändert sich\nPost-Typ → bleibt\nLänge → bleibt\nHashtag-Anzahl → bleibt\nWochentag → gut mischen"
+    },
+    {
+      "headline": "Ein Post ist *Zufall*",
+      "body": "Lege vorher fest, wie viele Posts jede Uhrzeit bekommt – zum Beispiel fünf. Schau erst hin, wenn alle Slots voll sind."
+    },
+    {
+      "headline": "Bestimme den *Sieger*, bevor du Zahlen siehst",
+      "body": "Sonst suchst du dir hinterher die Kennzahl aus, die gut aussieht. Notiere das vorab:",
+      "box": "Kennzahl: [z. B. Speicherungen]\nPosts pro Uhrzeit: [Zahl]\nFrühestes Fazit: alle Slots voll\nNotiert am: [Datum]"
+    },
+    {
+      "headline": "Der erste *Treffer* beweist nichts",
+      "body": "Ein Post um 18:30 läuft stark? Schön. Ein Post um 12:15 floppt? Auch egal. Erst die Serie zählt."
+    },
+    {
+      "headline": "Und das *Ergebnis*? Gibt es noch nicht.",
+      "body": "Stand 10.11.: 0 Follower, 0 Posts. Wir melden uns, wenn die Daten reichen – nicht früher."
+    }
+  ],
+  "caption": "Im Netz steht überall „die beste Uhrzeit zum Posten“. Für deine Zielgruppe kann sie ganz anders aussehen. Darum testen wir es selbst, statt eine Faustregel zu übernehmen.\n\nDas Schwierige ist nicht die Technik, sondern die Geduld. Gerade am Anfang, mit kleinen Zahlen, wirkt jeder Ausreißer wie ein Trend. Deshalb legen wir Kennzahl und Wiederholungen fest, bevor Daten da sind.\n\nDu kannst das bei dir genauso aufsetzen. Die Vorlage von Slide 6 reicht dafür.\n\nZu welcher Tageszeit wischst du am häufigsten durch Instagram – morgens, mittags oder abends?",
+  "hashtags": [
+    "buildinpublic",
+    "instagramtipps",
+    "abtest",
+    "kikollege",
+    "contentplanung"
+  ],
+  "review_notes": "Fakten stammen aus dem Journal vom 10.11.2026: Uhrzeiten 07:30/12:15/18:30 im Wechsel, 0 Follower, 0 Posts, Freigabe durch Menschen, Posting über GitHub Actions. Keine Ergebnisse behauptet. Prüfen: 1) „fünf Posts pro Uhrzeit“ ist nur ein Beispielwert, keine statistisch begründete Zahl. 2) „Speicherungen“ als Beispiel-Kennzahl – Begriff in den aktuellen Instagram-Insights kontrollieren. 3) Die Aussage „Stand 10.11.“ ggf. aktualisieren, falls sich bis zum Posten etwas geändert hat. 4) Titel: „Das Uhrzeit-Test“ → grammatisch besser „Der Uhrzeit-Test“, bei Bedarf korrigieren.",
+  "caption_final": "Im Netz steht überall „die beste Uhrzeit zum Posten“. Für deine Zielgruppe kann sie ganz anders aussehen. Darum testen wir es selbst, statt eine Faustregel zu übernehmen.\n\nDas Schwierige ist nicht die Technik, sondern die Geduld. Gerade am Anfang, mit kleinen Zahlen, wirkt jeder Ausreißer wie ein Trend. Deshalb legen wir Kennzahl und Wiederholungen fest, bevor Daten da sind.\n\nDu kannst das bei dir genauso aufsetzen. Die Vorlage von Slide 6 reicht dafür.\n\nZu welcher Tageszeit wischst du am häufigsten durch Instagram – morgens, mittags oder abends?\n\nErstellt mit KI-Unterstützung.\n\n#buildinpublic #instagramtipps #abtest #kikollege #contentplanung",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}

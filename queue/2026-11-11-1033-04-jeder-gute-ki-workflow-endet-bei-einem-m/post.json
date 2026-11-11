@@ -1,0 +1,56 @@
+{
+  "pillar": "workflow",
+  "format": "these",
+  "title": "Jeder gute KI-Workflow endet bei einem Menschen",
+  "slides": [
+    {
+      "headline": "Der wichtigste Schritt im KI-Workflow ist der langweiligste",
+      "body": "Er lässt sich auf drei Fragen eindampfen."
+    },
+    {
+      "headline": "Ohne Freigabe bist du *Weiterleiter*",
+      "body": "Die KI steht nicht für den Text gerade. Du schon. Wer nicht prüft, schickt nur fremde Fehler mit deinem Namen raus."
+    },
+    {
+      "headline": "Alles lesen *klappt* nicht",
+      "body": "Wer jeden Text komplett lesen muss, liest bald nur noch quer. Dann wird die Freigabe zum Abnicken."
+    },
+    {
+      "headline": "Stell *drei Fragen* statt Korrektur zu lesen",
+      "body": "Die Checkliste prüft kein Stilgefühl, sondern Risiko. Jede Frage hat einen klaren Ausstieg.",
+      "box": "Fakten: Zahlen, Namen, Versprechen – stimmt jedes? → Nein: Quelle prüfen\nStimme: Würde ich das so sagen? → Nein: umschreiben\nSchaden: Was kostet ein Fehler hier? → Viel: zweiter Blick"
+    },
+    {
+      "headline": "Ein *Nein* stoppt alles",
+      "body": "Dreimal Ja heißt freigeben. Einmal Nein heißt zurück an die KI – mit der Frage als Arbeitsauftrag. Kein Bauchgefühl-Roman."
+    },
+    {
+      "headline": "So läuft diese *Page*",
+      "body": "Claude schreibt, ein Script gestaltet, GitHub Actions postet. Ein Mensch gibt jede Woche am Handy per Pull Request frei."
+    },
+    {
+      "headline": "Bau die Freigabe *zuerst*",
+      "body": "Bevor du automatisierst: Wer sagt am Ende Ja? Schreib deine drei Fragen auf. Passe die dritte an dein größtes Risiko an."
+    }
+  ],
+  "caption": "Unpopuläre Meinung: Ein Workflow, der ohne Menschen auskommt, ist nicht fertig. Er ist unbeaufsichtigt.\n\nDie Freigabe wirkt wie Bremse. Mit drei Fragen ist sie eher ein Türsteher: kurz, klar, und er lässt nur durch, was passt.\n\nDiese Page ist das Beispiel. Die KI schreibt und baut vor, am Ende schaut ein Mensch drauf und entscheidet. Genau das Stück Arbeit würden wir nie wegautomatisieren.\n\nWelche drei Fragen würdest du bei deinem Workflow stellen?",
+  "hashtags": [
+    "kiworkflow",
+    "buildinpublic",
+    "automatisierung",
+    "kikollege",
+    "arbeitsorganisation"
+  ],
+  "review_notes": "Angaben zur Pipeline (Claude schreibt, Script gestaltet, GitHub Actions postet, wöchentliche Freigabe per Pull Request am Handy) stammen aus dem Journal vom 10.11.2026. Die drei Fragen sind ein Vorschlag, keine Beschreibung des tatsächlichen Review-Prozesses der Page – bitte prüfen, ob die Aussage in der Caption („Genau das Stück Arbeit würden wir nie wegautomatisieren“) so stehen bleiben soll. Keine Zahlen oder Ergebnisse genannt. · Interner Name „Unpopuläre Meinung“ steht im Text",
+  "caption_final": "Unpopuläre Meinung: Ein Workflow, der ohne Menschen auskommt, ist nicht fertig. Er ist unbeaufsichtigt.\n\nDie Freigabe wirkt wie Bremse. Mit drei Fragen ist sie eher ein Türsteher: kurz, klar, und er lässt nur durch, was passt.\n\nDiese Page ist das Beispiel. Die KI schreibt und baut vor, am Ende schaut ein Mensch drauf und entscheidet. Genau das Stück Arbeit würden wir nie wegautomatisieren.\n\nWelche drei Fragen würdest du bei deinem Workflow stellen?\n\nErstellt mit KI-Unterstützung.\n\n#kiworkflow #buildinpublic #automatisierung #kikollege #arbeitsorganisation",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

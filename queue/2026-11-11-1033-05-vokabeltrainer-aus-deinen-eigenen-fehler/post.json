@@ -1,0 +1,58 @@
+{
+  "pillar": "skill",
+  "format": "zweckfremd",
+  "title": "Vokabeltrainer aus deinen eigenen Fehlern",
+  "slides": [
+    {
+      "headline": "Dein Postausgang ist längst dein *Englischkurs*",
+      "body": "Kein Kurs. Keine App. Nur Mails, die du ohnehin schreibst."
+    },
+    {
+      "headline": "Apps üben *fremde* Fehler",
+      "body": "Vokabel-Apps üben, was alle falsch machen. Du stolperst vielleicht jedes Mal über since und for – genau das üben sie nicht."
+    },
+    {
+      "headline": "Ein Gem, das korrigiert und *mitschreibt*",
+      "body": "Gem oder Custom GPT anlegen. Diesen Text in die Anweisungen kopieren:",
+      "box": "Du bist mein Englisch-Korrektor. Ich schicke dir Mails. Du gibst zurück: 1. korrigierte Fassung 2. jeden Fehler als Zeile: falsch → richtig, Grund in max. 5 Wörtern 3. aktuelle Fehlerliste, sortiert nach Häufigkeit. Ändere nie meinen Stil, nur Fehler."
+    },
+    {
+      "headline": "Die *Liste* ist das eigentliche Produkt",
+      "body": "Mail für Mail wächst sie. Irgendwann steht oben, welcher Fehler dein Dauergast ist. So sieht sie aus:",
+      "box": "1. since/for verwechselt\n2. actual statt current\n3. 'Please find attached' → klingt steif"
+    },
+    {
+      "headline": "Auf Zuruf wird daraus ein *Quiz*",
+      "body": "Ein Stichwort reicht. Das Gem baut Fragen nur aus deiner Liste. Hänge diese Zeilen an die Anweisungen:",
+      "box": "Wenn ich 'Quiz' schreibe: 5 Aufgaben aus meiner Fehlerliste. Je Aufgabe ein Satz mit Lücke. Warte auf meine Antwort, dann lös auf. Häufigste Fehler zuerst. Am Ende: neue Reihenfolge der Liste."
+    },
+    {
+      "headline": "Neuer Chat, *leere* Liste",
+      "body": "Gems und GPTs schreiben nicht von selbst in ihre Anweisungen. Kopiere die Liste regelmäßig selbst hinein – oder bleib im selben Chat."
+    },
+    {
+      "headline": "Schwärze vorher *Namen* und Zahlen",
+      "body": "Echte Mails enthalten Kundendaten. Ersetze sie durch [Name] oder [Betrag]. Die Fehler bleiben ja dieselben."
+    }
+  ],
+  "caption": "Der Trick dahinter: Die Übungssätze stammen aus deinem eigenen Alltag. Ein Fehler in einem Satz, den du wirklich geschrieben hast, bleibt bei vielen besser hängen als eine Regel aus dem Lehrbuch. Probier es zwei Wochen aus und schau, ob sich die Liste verändert.\n\nWichtig: Das Gem ist nur so gut wie seine Anweisung. Wenn es zu viel erklärt, kürze die Zeilen. Wenn es deinen Stil umschreibt, wiederhole den letzten Satz der Anweisung.\n\nWelchen englischen Fehler machst du seit Jahren immer wieder?",
+  "hashtags": [
+    "englischlernen",
+    "businessenglish",
+    "customgpt",
+    "geminigems",
+    "kikollege"
+  ],
+  "review_notes": "Kein Tool-Detail mit Zahlen oder Preisen genannt. Bitte prüfen: 1) Gem = Google Gemini, Custom GPT = ChatGPT – der Text sagt bewusst „Gem oder Custom GPT“. 2) Aussage, dass Gems/GPTs nicht selbstständig in ihre Anweisungen schreiben und die Liste in neuen Chats fehlt, ggf. gegen aktuellen Funktionsstand (Memory-Features) prüfen. 3) Anweisungstexte einmal selbst im Gem/GPT testen, bevor gepostet wird. 4) Die Fehlerliste auf Slide 4 ist ein Formatbeispiel, kein echtes Ergebnis. 5) Der Satz in der Caption zum besseren Merken eigener Fehler ist vorsichtig formuliert („bei vielen“), keine Studie behauptet.",
+  "caption_final": "Der Trick dahinter: Die Übungssätze stammen aus deinem eigenen Alltag. Ein Fehler in einem Satz, den du wirklich geschrieben hast, bleibt bei vielen besser hängen als eine Regel aus dem Lehrbuch. Probier es zwei Wochen aus und schau, ob sich die Liste verändert.\n\nWichtig: Das Gem ist nur so gut wie seine Anweisung. Wenn es zu viel erklärt, kürze die Zeilen. Wenn es deinen Stil umschreibt, wiederhole den letzten Satz der Anweisung.\n\nWelchen englischen Fehler machst du seit Jahren immer wieder?\n\nErstellt mit KI-Unterstützung.\n\n#englischlernen #businessenglish #customgpt #geminigems #kikollege",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}
