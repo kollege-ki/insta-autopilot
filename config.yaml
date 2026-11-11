@@ -1,0 +1,127 @@
+# ============================================================
+#  Insta-Autopilot – zentrale Einstellungen
+#  Alles, was du anpassen willst, steht hier.
+# ============================================================
+
+brand:
+  name: "Kollege KI"
+  handle: "@kollege.ki"
+  language: "Deutsch für den DACH-Raum, Du-Form, österreichische Begriffe sind ok (Jänner usw.)"
+  tone: "klar, ehrlich, konkret, kein Hype, höchstens sparsam Emojis"
+  colors:
+    background: "#0F1115"
+    surface: "#1A1D24"
+    text: "#F2F2F2"
+    muted: "#9AA3AF"
+    accent: "#7CFFB2"
+
+# Claude-Modell für die Texte (API-String laut docs.claude.com)
+model: "claude-sonnet-5-5"
+
+content:
+  posts_per_batch: 7          # so viele Posts erzeugt ein Lauf (1 Woche bei 1 Post/Tag)
+  slides_min: 4               # Inhalts-Slides pro Karussell (ohne Abschluss-Slide)
+  slides_max: 8               # max. 9 inkl. Abschluss – Instagram erlaubt 10
+  hashtags_max: 5
+  ai_disclosure: "Erstellt mit KI-Unterstützung."
+  cta_slide:
+    headline: "Folg Kollege KI, wenn du KI für dich arbeiten lassen willst."
+    body: "Diese Page baut sich gerade selbst – mit KI. Ich zeig dir jeden Schritt."
+    footer: "Speichern nicht vergessen"
+  adapt_weights: true         # Säulen, die besser laufen, kommen öfter dran (aus den Insights)
+  ideas_per_post: 4           # Kreativ-Stufe: so viele Ideen pro Post sammeln, die besten gewinnen
+
+  # ---------- WORÜBER (Säulen) ----------
+  pillars:
+    - id: tool
+      name: "Tool-Check"
+      weight: 2
+      description: >-
+        Ein KI-Tool, ein konkreter Anwendungsfall, ein ehrliches Urteil inkl. Schwächen.
+        Gern ungewöhnliche Einsätze bekannter Tools statt Neuheiten-Listen. Keine erfundenen Features oder Preise.
+    - id: prompt
+      name: "Prompt"
+      weight: 2
+      description: >-
+        Fertige Prompts zum Kopieren, mit Erklärung, wann und warum sie funktionieren.
+        Den Prompt selbst ins Feld "box". Lieber ein brillanter Prompt als zehn mittelmäßige.
+    - id: skill
+      name: "Skill"
+      weight: 2
+      description: >-
+        Der KI einmal etwas beibringen und es immer wieder nutzen: Claude Skills, Custom GPTs,
+        Gemini Gems, Projekt-Anweisungen. Konkrete Skill-Ideen zum Nachbauen mit Aufbau
+        (Name, wann er greift, Anweisungen, Beispiel). Den Skill-Text ins Feld "box".
+    - id: workflow
+      name: "Workflow"
+      weight: 1
+      description: >-
+        Mehrere KI-Schritte zu einem Ablauf verkettet, der eine wiederkehrende Aufgabe erledigt –
+        mit Vorher/Nachher.
+    - id: making_of
+      name: "Making-of"
+      weight: 1
+      description: >-
+        Build in Public: wie diese Page von einer KI-Pipeline betrieben wird – Technik, Entscheidungen,
+        Fehler, echte Zahlen. Nur Fakten aus dem Journal verwenden.
+
+  # ---------- WIE (Formate) – sorgen dafür, dass nicht jeder Post gleich klingt ----------
+  formats:
+    - {id: stufen,      name: "Schlecht → Gut → Genial", description: "Derselbe Prompt/Skill in drei Ausbaustufen, der Unterschied wird sichtbar."}
+    - {id: zweckfremd,  name: "Zweckentfremdet",        description: "Ein Tool oder Prompt für etwas einsetzen, wofür es nie gedacht war."}
+    - {id: rolle,       name: "Die KI als …",           description: "Die KI in eine überraschende Rolle stecken: Gegner, Kritiker, Praktikant, Schwiegermutter, Anwalt des Teufels."}
+    - {id: rezept,      name: "Rezept",                 description: "Als Kochrezept aufgebaut: Zutaten, Zubereitung, Garzeit, Serviervorschlag."}
+    - {id: mythos,      name: "Mythos vs. Realität",    description: "Eine verbreitete Annahme über KI auseinandernehmen – mit Begründung."}
+    - {id: fehler,      name: "Der Fehler, den fast alle machen", description: "Ein typischer Denkfehler bei der KI-Nutzung und die bessere Alternative."}
+    - {id: these,       name: "Unpopuläre Meinung",     description: "Eine begründete Gegen-These zum Mainstream, die zum Diskutieren einlädt."}
+    - {id: rueckwaerts, name: "Rückwärts",              description: "Erst das fertige Ergebnis zeigen, dann Schritt für Schritt, wie es entstanden ist."}
+    - {id: experiment,  name: "Experiment zum Nachmachen", description: "Versuchsaufbau, den man selbst in 5 Minuten durchziehen kann, und worauf man beim Ergebnis achten soll."}
+    - {id: logbuch,     name: "Logbuch",                description: "Tagebuch-Eintrag der Page (nur für Making-of, nur Fakten aus dem Journal)."}
+
+  # ---------- Anti-Einheitsbrei ----------
+  banned_phrases:
+    - "Game-Changer"
+    - "Gamechanger"
+    - "revolutionär"
+    - "revolutioniert"
+    - "in der heutigen Zeit"
+    - "schnelllebigen"
+    - "Next Level"
+    - "das musst du wissen"
+    - "die du kennen musst"
+    - "mühelos"
+    - "nahtlos"
+    - "Hack"
+    - "die Zukunft ist jetzt"
+    - "passives Einkommen"
+  banned_topics:
+    - "Listen mit X KI-Tools ohne eigenen Test oder Dreh"
+    - "KI wird deinen Job ersetzen / Angst-Content"
+    - "Allgemeine ChatGPT-Tipps, die jeder schon kennt (Rolle geben, Kontext geben, …)"
+    - "Geld verdienen mit KI, Side-Hustle, Einkommen"
+
+posting:
+  timezone: "Europe/Vienna"
+  posts_per_day: 1
+  # Kandidaten-Uhrzeiten. Im Modus "explore" werden sie täglich durchrotiert,
+  # im Modus "auto" nimmt der Publisher die beste Uhrzeit laut Insights
+  # (und testet an jedem 5. Tag trotzdem eine andere weiter).
+  slots: ["07:30", "12:15", "18:30"]
+  mode: "auto"
+  min_posts_per_slot: 5       # erst ab so vielen Posts pro Slot wird verglichen
+  min_hours_between_posts: 4
+
+instagram:
+  api_host: "https://graph.instagram.com"
+  api_version: "v23.0"
+  # Öffentliche Basis-URL für die Bilder. Leer = raw.githubusercontent.com dieses Repos
+  # (setzt ein öffentliches Repo voraus).
+  public_base_url: ""
+
+# Etappenziele fürs Cockpit – Zahlen sind Startwerte, gern anpassen
+roadmap:
+  - {title: "Setup & erste 30 Posts", posts: 30, todo: "Danach Learnings lesen, Frequenz prüfen"}
+  - {title: "Erste 500 Follower", followers: 500, todo: "Kommentar-Keyword → DM mit Link einrichten, erste Affiliate-Links"}
+  - {title: "1.000 Follower", followers: 1000, todo: "Phase 2: Text-Reels mit KI-Stimme dazunehmen"}
+  - {title: "2.500 Follower", followers: 2500, todo: "Skill-Pack bzw. Gesamtvorlage verkaufen (Workflow „5 · Vorlage exportieren“)"}
+  - {title: "10.000 Follower", followers: 10000, todo: "Kooperationen, Newsletter, eigenes Produkt ausbauen"}
