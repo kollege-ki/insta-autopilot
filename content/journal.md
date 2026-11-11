@@ -30,4 +30,6 @@ schreib eine Zeile `- Meilenstein: …` unter das Datum. Das Dashboard vergleich
 - Meilenstein: Neues Slide-Format „Editor-Fenster“ – jede Slide sieht aus wie ein Fenster, in dem die KI tippt.
   Schrift Bricolage Grotesque, Rahmenfarbe je Serie (Prompt grün, Tool-Check und Workflow hell, Skill schwarz).
 - Meilenstein: Erster Post live (von Hand ausgelöst, ab morgen postet die Page selbst).
+- Nach gut 2 Stunden: 0 Aufrufe – ein neues Konto ohne Follower hat niemanden, dem Instagram den Post zuerst zeigt.
+- Meilenstein: Automatische Reels – aus jedem Karussell entsteht ein Video, in dem die KI die Headline tippt (nur im Reels-Bereich, das Profil-Raster bleibt Karussells).
 - Stand: 0 Follower, 1 Post.
