@@ -1,0 +1,58 @@
+{
+  "pillar": "skill",
+  "format": "rueckwaerts",
+  "title": "Erst die perfekte Mail, dann der Skill dahinter",
+  "slides": [
+    {
+      "headline": "Diese Mail klingt nach dir. Du hast sie nicht geschrieben.",
+      "body": "Erst das Ergebnis. Dann der Weg dorthin, rückwärts."
+    },
+    {
+      "headline": "Das Ergebnis: eine Mail in deinem Ton",
+      "body": "Beispiel, wie so ein Ergebnis aussehen kann:",
+      "box": "Hallo Karin,\n\nkurz vorweg: Ja, das geht. Nein, nicht bis Freitag. Donnerstag nächste Woche, dann mit Testlauf.\n\nWas ich von dir brauche: die Liste der Standorte. Mehr nicht.\n\nLg\nTom"
+    },
+    {
+      "headline": "Rückwärts gefragt: Woher kennt die KI deinen Ton?",
+      "body": "Gar nicht. Sie bekommt Material und liest daraus Regeln heraus. Diese Regeln prüfst du, und sie werden zu deinem Skill."
+    },
+    {
+      "headline": "Schritt 1: Drei echte Mails von dir",
+      "body": "Such drei alte Mails, die du selbst geschrieben hast: eine Zusage, eine Absage, eine Bitte. Namen, Zahlen und Interna vorher unkenntlich machen."
+    },
+    {
+      "headline": "Schritt 2: Regeln extrahieren lassen",
+      "body": "Nicht „schreib wie ich“. Sondern: Lass die KI beschreiben, was deine Mails tatsächlich tun.",
+      "box": "Hier sind drei Mails von mir. Beschreibe als nummerierte Stilregeln, wie ich schreibe: Einstieg, Satzlänge, Umgang mit Bitten und Absagen, Grußformel. Belege jede Regel mit einem Zitat aus den Mails. Regeln ohne Beleg lässt du weg."
+    },
+    {
+      "headline": "Schritt 3: Jede Regel gegenprüfen",
+      "body": "Streich, was nicht stimmt oder nur in einer Mail vorkam. Die Zitate zeigen dir sofort: Ist das eine Gewohnheit oder Zufall?"
+    },
+    {
+      "headline": "Schritt 4: Die Regeln sind jetzt dein Skill",
+      "body": "Beispielregeln, deine werden anders aussehen. Kopiere sie in Projektanweisung, Custom Instructions oder Skill-Datei, je nach Tool.",
+      "box": "Stilregeln für meine Mails:\n1. Antwort im ersten Satz, Begründung danach.\n2. Zusagen und Einschränkungen in getrennten Sätzen.\n3. Höchstens eine Bitte pro Mail.\n4. Keine Einleitung wie „Ich hoffe, es geht dir gut“.\n5. Gruß: „Lg“ plus Vorname."
+    }
+  ],
+  "caption": "Der Trick liegt in der Richtung: Du beschreibst deinen Stil nicht aus dem Kopf (das gelingt kaum jemandem), sondern lässt ihn aus Belegen ableiten.\n\nDas Zitat-Verbot für Regeln ohne Beleg ist der wichtigste Satz im Prompt. Ohne ihn liefert die KI gern nett klingende Allgemeinplätze wie „freundlich und klar“.\n\nTipp: Wiederhole den Test nach ein paar Wochen mit anderen drei Mails. Regeln, die wieder auftauchen, sind deine echten.\n\nWelche Regel würde bei deinen Mails garantiert herauskommen?",
+  "hashtags": [
+    "kollegeki",
+    "promptengineering",
+    "ki-skills",
+    "schreibstil",
+    "arbeitsalltag"
+  ],
+  "review_notes": "Beispielmail und Beispielregeln sind frei erfunden und im Post als Beispiel gekennzeichnet. Hinweis auf Anonymisierung der Mails ist enthalten (Datenschutz). Bezeichnungen 'Projektanweisung / Custom Instructions / Skill-Datei' bewusst tool-neutral gehalten. Hashtag 'ki-skills' enthält Bindestrich, ggf. durch 'kiskills' ersetzen, da Instagram-Hashtags keine Bindestriche unterstützen.",
+  "caption_final": "Der Trick liegt in der Richtung: Du beschreibst deinen Stil nicht aus dem Kopf (das gelingt kaum jemandem), sondern lässt ihn aus Belegen ableiten.\n\nDas Zitat-Verbot für Regeln ohne Beleg ist der wichtigste Satz im Prompt. Ohne ihn liefert die KI gern nett klingende Allgemeinplätze wie „freundlich und klar“.\n\nTipp: Wiederhole den Test nach ein paar Wochen mit anderen drei Mails. Regeln, die wieder auftauchen, sind deine echten.\n\nWelche Regel würde bei deinen Mails garantiert herauskommen?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #promptengineering #ki-skills #schreibstil #arbeitsalltag",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

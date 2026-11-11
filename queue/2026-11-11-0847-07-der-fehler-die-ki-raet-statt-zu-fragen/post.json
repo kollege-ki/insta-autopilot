@@ -1,0 +1,57 @@
+{
+  "pillar": "prompt",
+  "format": "fehler",
+  "title": "Der Fehler: Die KI rät, statt zu fragen",
+  "slides": [
+    {
+      "headline": "Deine KI rät ständig. Du siehst es nur nie.",
+      "body": "Ein einziger Satz im Prompt ändert das."
+    },
+    {
+      "headline": "Der Fehler: Lücken werden still gefüllt",
+      "body": "Fehlt in deiner Aufgabe eine Info, fragt die KI selten nach. Sie nimmt etwas Plausibles an und schreibt los. Die Antwort wirkt rund, aber ein Teil davon ist geraten."
+    },
+    {
+      "headline": "Der Satz, der das sichtbar macht",
+      "body": "Häng ihn an jeden Prompt, bei dem Fehler teuer wären.",
+      "box": "Wenn dir etwas fehlt, das du nicht sicher aus meinem Text ableiten kannst, schreibe es als Annahme in eine Liste ganz oben, bevor du antwortest."
+    },
+    {
+      "headline": "Beispiel: Aus einer Zeile wird eine Liste",
+      "body": "Aufgabe: „Schreib eine Einladung zum Teamtreffen.“ So könnte die Annahmenliste aussehen (erfundenes Beispiel):",
+      "box": "Annahmen:\n1. Termin nicht genannt: ich setze „nächster Dienstag“ ein.\n2. Dauer nicht genannt: ich nehme eine Stunde an.\n3. Anrede: Du-Form.\n4. Ort: online, weil nichts anderes steht."
+    },
+    {
+      "headline": "So liest du die Liste",
+      "body": "Geh jede Annahme durch und markiere sie: stimmt, falsch oder egal. Bei „falsch“ korrigierst du in einer Zeile. Du merkst schnell, welche Lücken in deinen Aufgaben immer wieder auftauchen."
+    },
+    {
+      "headline": "Warum ganz oben?",
+      "body": "Steht die Liste unter der Antwort, liest du erst den fertigen Text und überspringst die Annahmen. Oben siehst du sie, bevor du dich an die Formulierung gewöhnt hast."
+    },
+    {
+      "headline": "Die Grenze: Nur bemerkte Lücken",
+      "body": "Die KI listet nur, was ihr selbst auffällt. Geratenes, das sie für sicher hält, rutscht durch. Der Satz macht Raten sichtbarer, aber nicht unmöglich. Faktenchecks bleiben Pflicht."
+    }
+  ],
+  "caption": "Das Problem ist nicht, dass die KI rät. Das tun wir auch. Das Problem ist, dass du es nicht siehst.\n\nMit der Annahmenliste wird aus einem Prompt eine kleine Prüfung: Du erkennst, welche Infos du in Zukunft gleich mitgeben solltest. Nach ein paar Durchläufen werden deine Aufgaben von selbst genauer.\n\nDer Satz funktioniert in jedem Chat-Tool, du brauchst weder Einstellungen noch Zusatzfunktionen.\n\nWelche Annahme würde die KI bei deiner letzten Aufgabe wohl gemacht haben?",
+  "hashtags": [
+    "kollegeki",
+    "promptengineering",
+    "promptfehler",
+    "chatgpt",
+    "claude"
+  ],
+  "review_notes": "Beispiel (Teamtreffen-Einladung und Annahmenliste) ist ausdrücklich als erfundenes Beispiel gekennzeichnet. Aussage 'fragt selten nach' ist eine allgemeine Beobachtung, nicht belegt: ggf. abschwächen zu 'fragt oft nicht nach'. Aussage in der Caption 'funktioniert in jedem Chat-Tool' ist nicht für jedes Tool getestet, vor dem Posten prüfen oder abschwächen.",
+  "caption_final": "Das Problem ist nicht, dass die KI rät. Das tun wir auch. Das Problem ist, dass du es nicht siehst.\n\nMit der Annahmenliste wird aus einem Prompt eine kleine Prüfung: Du erkennst, welche Infos du in Zukunft gleich mitgeben solltest. Nach ein paar Durchläufen werden deine Aufgaben von selbst genauer.\n\nDer Satz funktioniert in jedem Chat-Tool, du brauchst weder Einstellungen noch Zusatzfunktionen.\n\nWelche Annahme würde die KI bei deiner letzten Aufgabe wohl gemacht haben?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #promptengineering #promptfehler #chatgpt #claude",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

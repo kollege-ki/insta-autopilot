@@ -1,0 +1,57 @@
+{
+  "pillar": "workflow",
+  "format": "rezept",
+  "title": "Rezept: Sprachmemo zu Aufgabenliste zu Kalenderblöcken",
+  "slides": [
+    {
+      "headline": "Rezept: Aus 2 Minuten Spazieren wird ein geplanter Tag",
+      "body": "Garzeit: 10 Minuten. Kochen musst du nur wenig."
+    },
+    {
+      "headline": "Zutaten",
+      "body": "Ein Sprachmemo von etwa zwei Minuten, aufgenommen beim Spazieren. Die Diktierfunktion deines Handys. Ein KI-Chat. Dein Kalender, geöffnet daneben. Mehr nicht."
+    },
+    {
+      "headline": "Schritt 1: Rohtext gewinnen",
+      "body": "Sprich alles aus, was im Kopf liegt: Aufgaben, Sorgen, Termine, ungeordnet. Lass es diktieren und füge den Rohtext in den Chat ein. Nichts glätten, Tippfehler bleiben drin."
+    },
+    {
+      "headline": "Schritt 2: Aufgaben mit Aufwandsschätzung",
+      "body": "Die KI sortiert das Durcheinander in eine Liste und schätzt den Aufwand.",
+      "box": "Hier ist ein diktierter Rohtext. Mach daraus eine Aufgabenliste. Pro Aufgabe: ein Verb am Anfang, geschätzter Aufwand in Minuten, und eine Rückfrage, falls etwas unklar ist. Erfinde keine Aufgaben, die nicht im Text stehen."
+    },
+    {
+      "headline": "Zwischenprobe: Stimmen die Schätzungen?",
+      "body": "Geh die Liste kurz durch. Du kennst deine Tage besser als die KI. Korrigiere Aufwände, die nicht passen, streiche Fremdes und beantworte die Rückfragen."
+    },
+    {
+      "headline": "Schritt 3: Vorschlag für Zeitblöcke",
+      "body": "Jetzt kommt der Kalender ins Spiel, als Text, nicht automatisch.",
+      "box": "Hier ist meine Liste. Meine freien Zeiten morgen: [Zeiten]. Schlage Zeitblöcke vor. Gleiche Aufgabenarten bündeln, zwischen Blöcken Pausen lassen, nichts über meine freien Zeiten hinaus. Wenn etwas nicht reinpasst, nenne es separat."
+    },
+    {
+      "headline": "Abschmecken: Du entscheidest",
+      "body": "Nichts landet automatisch im Kalender. Du trägst nur ein, was du wirklich tun willst. Der Rest bleibt auf der Liste oder fliegt raus. Das Streichen gehört zum Rezept."
+    }
+  ],
+  "caption": "Das Besondere an diesem Rezept ist die Reihenfolge: erst ausschütten, dann ordnen, dann planen. Die meisten Planungs-Prompts scheitern, weil sie mit dem dritten Schritt anfangen.\n\nDer Spaziergang hilft auch inhaltlich: Beim Gehen sprichst du freier, als du tippst.\n\nDie zehn Minuten sind eine Richtgröße. Bei einer langen Liste kann es länger dauern.\n\nWas würde bei dir im Sprachmemo zuerst auftauchen?",
+  "hashtags": [
+    "kollegeki",
+    "zeitmanagement",
+    "sprachmemo",
+    "kiworkflow",
+    "produktivitaet"
+  ],
+  "review_notes": "Die Garzeit (10 Minuten) stammt aus der Ideenvorgabe und ist nicht gemessen; in der Caption als Richtgröße markiert. Datenschutz-Hinweis ggf. ergänzen: Diktat/Sprachmemo kann persönliche oder berufliche Inhalte enthalten. Die Aussage 'Die meisten Planungs-Prompts scheitern, weil...' ist eine pauschale Behauptung: ggf. abschwächen.",
+  "caption_final": "Das Besondere an diesem Rezept ist die Reihenfolge: erst ausschütten, dann ordnen, dann planen. Die meisten Planungs-Prompts scheitern, weil sie mit dem dritten Schritt anfangen.\n\nDer Spaziergang hilft auch inhaltlich: Beim Gehen sprichst du freier, als du tippst.\n\nDie zehn Minuten sind eine Richtgröße. Bei einer langen Liste kann es länger dauern.\n\nWas würde bei dir im Sprachmemo zuerst auftauchen?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #zeitmanagement #sprachmemo #kiworkflow #produktivitaet",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

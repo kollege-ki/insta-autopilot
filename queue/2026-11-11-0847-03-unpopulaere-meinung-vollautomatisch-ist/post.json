@@ -1,0 +1,61 @@
+{
+  "pillar": "making_of",
+  "format": "these",
+  "title": "Unpopuläre Meinung: Vollautomatisch ist das falsche Ziel",
+  "slides": [
+    {
+      "headline": "Unpopuläre Meinung: „Vollautomatisch“ ist das falsche Ziel.",
+      "body": "Gesagt von einer Page, die sich fast komplett selbst betreibt."
+    },
+    {
+      "headline": "So läuft diese Page",
+      "body": "Claude sammelt pro Post vier Ideen und schreibt die beste aus. Ein Python-Script gestaltet die Slides. GitHub Actions postet. Drei Schritte, null Handarbeit."
+    },
+    {
+      "headline": "Und dann kommt ein Mensch",
+      "body": "Jede Woche gibt der Betreiber alles am Handy per Pull Request frei. Nichts geht raus, was nicht vorher ein Mensch gesehen hat."
+    },
+    {
+      "headline": "Die These: Die Freigabe ist keine Bremse",
+      "body": "Sie ist kein Zeichen, dass die Automatisierung unfertig ist. Sie ist der Teil, der die Automatisierung erst verantwortbar macht."
+    },
+    {
+      "headline": "Warum: Die KI kann ihre Fehler nicht sehen",
+      "body": "Ob ein Tool-Detail stimmt oder ein Satz zu forsch klingt, merkt oft nur jemand, der es prüft. Darum bekommt jeder Post hier eine Prüfliste für den Menschen mit."
+    },
+    {
+      "headline": "Warum: Sie muss klein genug sein",
+      "body": "Eine Freigabe, die nervt, wird übersprungen. Am Handy, gebündelt pro Woche, bleibt sie machbar. Das war eine bewusste Entscheidung beim Bauen."
+    },
+    {
+      "headline": "Dein Test: Wo ist dein Pull Request?",
+      "body": "Drei Fragen für jeden Automatismus, den du baust:",
+      "box": "1. Was geht raus, ohne dass ich es vorher sehe?\n2. Was passiert, wenn es falsch ist, und wer merkt es zuerst?\n3. Kann ich die Prüfung in wenigen Minuten erledigen?\n\nTrifft Frage 1 oder 2 zu und 3 nicht: Freigabe-Schritt einbauen."
+    },
+    {
+      "headline": "Ehrlicher Stand",
+      "body": "Die Page startet bei 0 Followern und 0 Posts. Ob dieses Setup funktioniert, beweist noch keine Zahl. Diese Meinung ist eine Wette, kein Ergebnis."
+    }
+  ],
+  "caption": "Automatisierung wird oft daran gemessen, wie wenig Mensch noch drinsteckt. Ich halte das für die falsche Messlatte. Besser: Wie früh fällt auf, wenn etwas schiefgeht?\n\nDeshalb steht bei dieser Page die Freigabe nicht am Rand, sondern mitten in der Pipeline.\n\nWir dokumentieren hier weiter, was das in der Praxis bringt, auch wenn es sich als falsch herausstellt.\n\nWo in deinem Workflow läuft etwas durch, ohne dass je ein Mensch hinschaut?",
+  "hashtags": [
+    "kollegeki",
+    "buildinpublic",
+    "automatisierung",
+    "githubactions",
+    "claude"
+  ],
+  "review_notes": "Alle Fakten stammen aus dem Journal vom 10.11.2026 (Pipeline, 4 Ideen pro Post, Script, GitHub Actions, wöchentliche Freigabe per Pull Request am Handy, Stand 0 Follower/0 Posts). 'Prüfliste für den Menschen' bezieht sich auf das review_notes-Feld der Pipeline. Der Satz 'Das war eine bewusste Entscheidung beim Bauen' (Slide 6) ist eine Interpretation, bitte bestätigen, ob die Handy-Freigabe tatsächlich so gedacht war. Die Caption wechselt zwischen 'ich' und 'wir', bitte vereinheitlichen. Die 'Null Handarbeit' gilt für die drei Schritte, nicht fürs Einrichten.",
+  "caption_final": "Automatisierung wird oft daran gemessen, wie wenig Mensch noch drinsteckt. Ich halte das für die falsche Messlatte. Besser: Wie früh fällt auf, wenn etwas schiefgeht?\n\nDeshalb steht bei dieser Page die Freigabe nicht am Rand, sondern mitten in der Pipeline.\n\nWir dokumentieren hier weiter, was das in der Praxis bringt, auch wenn es sich als falsch herausstellt.\n\nWo in deinem Workflow läuft etwas durch, ohne dass je ein Mensch hinschaut?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #buildinpublic #automatisierung #githubactions #claude",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}

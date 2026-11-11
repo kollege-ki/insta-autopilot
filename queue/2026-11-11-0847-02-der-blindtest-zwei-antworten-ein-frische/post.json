@@ -1,0 +1,56 @@
+{
+  "pillar": "prompt",
+  "format": "experiment",
+  "title": "Der Blindtest: zwei Antworten, ein frischer Chat als Schiedsrichter",
+  "slides": [
+    {
+      "headline": "Welche Antwort ist besser? Frag nicht den Chat, der sie schrieb.",
+      "body": "Ein Experiment, das du in fünf Minuten selbst machst."
+    },
+    {
+      "headline": "Schritt 1: Dieselbe Frage, zwei Antworten",
+      "body": "Stell eine echte Aufgabe aus deinem Alltag, etwa einen Text oder eine Erklärung. Lass sie zweimal erzeugen: per „Neu generieren“ oder in zwei getrennten Chats. Kopiere beide in eine Notiz als A und B."
+    },
+    {
+      "headline": "Schritt 2: Tipp vorher dein Bauchgefühl",
+      "body": "Lies A und B und schreib auf, welche du besser findest, bevor du irgendetwas fragst. Das ist dein Messwert. Ohne ihn lernst du aus dem Experiment nichts."
+    },
+    {
+      "headline": "Schritt 3: Frischer Chat, keine Herkunft",
+      "body": "Neuer Chat, ohne Vorgeschichte. Gib beide Texte ein und verrate nicht, dass es KI-Antworten sind oder welche du magst.",
+      "box": "Unten stehen zwei Antworten auf dieselbe Aufgabe: [Aufgabe in einem Satz]. Welche ist besser? Begründe in drei Punkten und nenne das wichtigste Kriterium. Wenn sich der Unterschied kaum lohnt, sag das offen.\n\nA: […]\n\nB: […]"
+    },
+    {
+      "headline": "Schritt 4: Tausch die Reihenfolge",
+      "body": "Wiederhole den Test in einem weiteren frischen Chat, diesmal mit B zuerst. Kippt das Urteil, war der Unterschied klein oder der Schiedsrichter lässt sich von der Position beeinflussen."
+    },
+    {
+      "headline": "Auswertung: Wo liegt ihr auseinander?",
+      "body": "Stimmen Bauchgefühl und Urteil überein, ist alles gut. Liegt ihr daneben, lies die Begründung: Dort steht ein Kriterium, das du bisher nie benannt hast."
+    },
+    {
+      "headline": "Das Kriterium wandert in deinen Prompt",
+      "body": "Findest du das Kriterium richtig, bau es als Satz in deine Standard-Anweisung ein. Findest du es falsch, hast du gerade deinen eigenen Maßstab geschärft. Beides ist ein Gewinn."
+    }
+  ],
+  "caption": "Dieser Test zeigt vor allem eines: wie viel Urteil du sonst nebenbei an die KI abgibst, ohne es zu merken.\n\nDer frische Chat ist kein neutraler Richter. Auch Modelle haben Vorlieben, etwa für längere oder ausführlichere Texte. Deshalb der Tausch der Reihenfolge und das Aufschreiben deines eigenen Tipps.\n\nZiel ist nicht, dass die KI Recht hat. Ziel ist, dass du siehst, wo ihr verschieden urteilt.\n\nWenn du den Test machst: Wie oft lagt ihr daneben?",
+  "hashtags": [
+    "kollegeki",
+    "promptengineering",
+    "kiexperiment",
+    "chatgpt",
+    "claude"
+  ],
+  "review_notes": "Keine Ergebnisse behauptet, nur Anleitung. Aussage, dass Modelle Vorlieben (z. B. für längere Antworten, Positionseffekte) haben können, entspricht allgemein bekannter Forschung zu 'LLM-as-a-Judge', ist aber bewusst vorsichtig formuliert. Bitte kurz gegenlesen. Das Wort 'Neu generieren' ist je nach App unterschiedlich benannt.",
+  "caption_final": "Dieser Test zeigt vor allem eines: wie viel Urteil du sonst nebenbei an die KI abgibst, ohne es zu merken.\n\nDer frische Chat ist kein neutraler Richter. Auch Modelle haben Vorlieben, etwa für längere oder ausführlichere Texte. Deshalb der Tausch der Reihenfolge und das Aufschreiben deines eigenen Tipps.\n\nZiel ist nicht, dass die KI Recht hat. Ziel ist, dass du siehst, wo ihr verschieden urteilt.\n\nWenn du den Test machst: Wie oft lagt ihr daneben?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #promptengineering #kiexperiment #chatgpt #claude",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

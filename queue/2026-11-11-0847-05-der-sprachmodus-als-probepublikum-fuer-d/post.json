@@ -1,0 +1,56 @@
+{
+  "pillar": "tool",
+  "format": "rolle",
+  "title": "Der Sprachmodus als Probepublikum für deinen Vortrag",
+  "slides": [
+    {
+      "headline": "Dein Vortrag hat noch kein Publikum. Dieses hier hört zu.",
+      "body": "Tool-Check: Sprachmodus als Probehörer, inklusive Schwächen."
+    },
+    {
+      "headline": "So richtest du die Probe ein",
+      "body": "Öffne den Sprachmodus deines KI-Assistenten, gib diese Anweisung und halte den Vortrag dann laut, stehend, mit Zeitnahme.",
+      "box": "Ich halte gleich einen Vortrag für [Zielgruppe] über [Thema]. Du bist jemand aus dieser Zielgruppe ohne Vorwissen. Unterbrich mich, wenn ich etwas Unklares sage, mit einer kurzen Rückfrage. Sonst schweig. Nach dem Ende nennst du die drei Stellen, an denen du am meisten Mühe hattest."
+    },
+    {
+      "headline": "Was das Probepublikum gut kann",
+      "body": "Es stolpert über Fachwörter, Sprünge und Sätze, die nur du verstehst. Eine Rückfrage mitten im Satz ist unbequem, und genau deshalb wirkt sie."
+    },
+    {
+      "headline": "Schwäche 1: Es ist kein echtes Publikum",
+      "body": "Kein Gähnen, kein Stirnrunzeln, keine Stimmung im Raum. Die KI reagiert auf Inhalt, nicht auf Energie. Ob dein Vortrag fesselt, erfährst du hier nicht."
+    },
+    {
+      "headline": "Schwäche 2: Feedback zur Betonung ist dünn",
+      "body": "Tempo, Pausen und Betonung kann der Sprachmodus nur begrenzt bewerten. Nimm dich deshalb zusätzlich mit dem Handy auf und hör dir selbst zu. Das ist unbequemer und ehrlicher."
+    },
+    {
+      "headline": "Teste, ob es sich an die Regel hält",
+      "body": "Manche Sprachmodi reden zu früh oder zu oft dazwischen. Prüfe in den ersten zwei Minuten, ob Rückfragen nur bei Unklarem kommen. Wenn nicht, wiederhole die Anweisung oder kürze sie."
+    },
+    {
+      "headline": "Urteil: Gut für Verständlichkeit, nicht für Wirkung",
+      "body": "Nutze es für die erste Fassung. Für die letzte Probe brauchst du einen Menschen, der dir zuhört, am besten jemanden, der das Thema nicht kennt."
+    }
+  ],
+  "caption": "Der Dreh: Du fragst die KI nicht, ob dein Vortrag gut ist, sondern lässt sie Zuhörer spielen, die stolpern dürfen. Das ist ein anderer Auftrag und liefert andere Antworten.\n\nDie Stellen, an denen sie nachfragt, sind meist die, an denen echte Zuhörer innerlich aussteigen.\n\nAber: Sie ersetzt keine Generalprobe vor Menschen. Sie spart nur die Fragen, für die du sonst jemanden brauchen würdest.\n\nWo stolperst du bei Vorträgen am häufigsten: beim Einstieg, in der Mitte oder am Schluss?",
+  "hashtags": [
+    "kollegeki",
+    "sprachmodus",
+    "vortragstipps",
+    "praesentieren",
+    "kitools"
+  ],
+  "review_notes": "Tool bewusst nicht namentlich genannt, da Sprachmodi (ChatGPT Voice, Gemini Live, Claude-Sprachfunktion) unterschiedlich funktionieren. Bitte prüfen: Verhalten bei Unterbrechungen und Feedback zu Betonung sind pauschal und vorsichtig formuliert, nicht für ein bestimmtes Produkt getestet. Aussage in der Caption ('Die Stellen, an denen sie nachfragt, sind meist die, an denen echte Zuhörer aussteigen') ist eine Behauptung ohne Beleg: ggf. abschwächen zu 'können ein Hinweis sein'.",
+  "caption_final": "Der Dreh: Du fragst die KI nicht, ob dein Vortrag gut ist, sondern lässt sie Zuhörer spielen, die stolpern dürfen. Das ist ein anderer Auftrag und liefert andere Antworten.\n\nDie Stellen, an denen sie nachfragt, sind meist die, an denen echte Zuhörer innerlich aussteigen.\n\nAber: Sie ersetzt keine Generalprobe vor Menschen. Sie spart nur die Fragen, für die du sonst jemanden brauchen würdest.\n\nWo stolperst du bei Vorträgen am häufigsten: beim Einstieg, in der Mitte oder am Schluss?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #sprachmodus #vortragstipps #praesentieren #kitools",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

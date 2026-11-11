@@ -1,0 +1,56 @@
+{
+  "pillar": "skill",
+  "format": "zweckfremd",
+  "title": "Ein Gemini Gem als Ich von vor 3 Monaten",
+  "slides": [
+    {
+      "headline": "Ein Gem, das nie antwortet. Es fragt nur.",
+      "body": "Und zwar nach deinen eigenen Entscheidungen von früher."
+    },
+    {
+      "headline": "Die Idee: Ein Gegenüber ohne Ratschläge",
+      "body": "Meist nutzt man KI für Antworten. Dieses Gem tut das Gegenteil: Es stellt Fragen zu Entscheidungen, die du schon getroffen hast, und lässt dich selbst auswerten."
+    },
+    {
+      "headline": "Zutat: Deine Notizen",
+      "body": "Sammle Notizen zu Entscheidungen, etwa „Tool gewechselt“, „Projekt A vor B gesetzt“, „Angebot abgelehnt“. Je Eintrag: Datum, Entscheidung, Grund. Stichworte reichen. Lade sie als Wissen ins Gem."
+    },
+    {
+      "headline": "Die Gem-Anweisung",
+      "body": "So legst du das Gem an:",
+      "box": "Du bist mein Entscheidungsjournal. Du kennst nur die Notizen in deinem Wissen. Gib nie Ratschläge oder Bewertungen. Stelle pro Nachricht genau eine Frage. Erst: Was wusstest du damals? Was hast du angenommen? Dann: Was weißt du heute? Was würdest du anders machen? Am Ende: Journal-Eintrag in vier Zeilen."
+    },
+    {
+      "headline": "So läuft eine Sitzung",
+      "body": "Du nennst eine Entscheidung aus den Notizen. Das Gem fragt, du tippst oder sprichst. Nach etwa fünf Fragen merkst du: Manche Entscheidungen waren gut begründet, andere nur bequem."
+    },
+    {
+      "headline": "Das Ende: Ein Vier-Zeilen-Eintrag",
+      "body": "Am Schluss fasst das Gem zusammen: Entscheidung, Annahme damals, Erkenntnis heute, nächste Regel. Diesen Eintrag kopierst du in deine Notizen. So wächst das Journal."
+    },
+    {
+      "headline": "Grenzen: Das Gem lernt nicht von allein",
+      "body": "Neue Einträge musst du selbst in die Wissensdateien legen. Und: Es ist ein Fragesteller, kein Coach. Für große Lebensentscheidungen bleibt es ein Denkanstoß, nicht mehr."
+    }
+  ],
+  "caption": "Spannend an diesem Aufbau ist, dass die KI hier bewusst weniger kann: Sie darf nichts bewerten. Dadurch bleibt das Nachdenken bei dir.\n\nEntscheidungsjournale funktionieren schon lange ohne KI. Der Vorteil des Gems: Es fragt nach, wenn du dir selbst Ausreden durchgehen lässt.\n\nFang mit drei Entscheidungen an. Mehr Notizen braucht der erste Durchlauf nicht.\n\nWelche Entscheidung der letzten Monate würdest du dir zuerst vornehmen?",
+  "hashtags": [
+    "kollegeki",
+    "geminigem",
+    "entscheidungsjournal",
+    "ki-skills",
+    "selbstreflexion"
+  ],
+  "review_notes": "Bitte prüfen: Gems in Gemini erlauben das Hinterlegen von Anweisungen und Wissensdateien (aktuell?), Verfügbarkeit/Limits ggf. abhängig vom Tarif. Aussage 'Neue Einträge musst du selbst in die Wissensdateien legen' bitte gegen aktuelle App-Funktion prüfen. Titel verwendet 'Ich von vor 3 Monaten' wie von der Vorgabe, die Zeitspanne ist nur ein Beispiel. Hashtag 'ki-skills' wegen Bindestrich ggf. in 'kiskills' ändern.",
+  "caption_final": "Spannend an diesem Aufbau ist, dass die KI hier bewusst weniger kann: Sie darf nichts bewerten. Dadurch bleibt das Nachdenken bei dir.\n\nEntscheidungsjournale funktionieren schon lange ohne KI. Der Vorteil des Gems: Es fragt nach, wenn du dir selbst Ausreden durchgehen lässt.\n\nFang mit drei Entscheidungen an. Mehr Notizen braucht der erste Durchlauf nicht.\n\nWelche Entscheidung der letzten Monate würdest du dir zuerst vornehmen?\n\nErstellt mit KI-Unterstützung.\n\n#kollegeki #geminigem #entscheidungsjournal #ki-skills #selbstreflexion",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}
