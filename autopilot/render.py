@@ -34,7 +34,8 @@ FONT_DIRS = [ASSETS, Path("/usr/share/fonts/opentype/inter"), Path("/usr/share/f
 _font_cache: dict = {}
 
 # Schriftgrößen (Start, Minimum) – verkleinert wird nur, wenn der Text sonst nicht passt
-SIZES = {"cover": (100, 72), "head": (66, 50), "body": (42, 32), "box": (34, 26)}
+SIZES = {"cover": (100, 72), "head": (66, 50), "body": (42, 32), "box": (34, 26),
+         "head_solo": (76, 54), "body_solo": (50, 36)}
 
 DEFAULT_FRAMES = {"tool": "light", "prompt": "accent", "skill": "dark", "workflow": "light", "making_of": "dark"}
 LIGHT = "#E8E9E4"
@@ -66,17 +67,33 @@ def shade(c: tuple, delta: int) -> tuple:
 
 # ---------------------------------------------------------------- Text mit *Hervorhebungen*
 
-def tokens(text: str) -> list[list[tuple[str, bool]]]:
+def tokens(text: str) -> list[list[list[tuple[str, bool]]]]:
+    """Absätze → Wörter → Segmente (Text, hervorgehoben?).
+    *so* wird Akzentfarbe. Satzzeichen direkt nach einer Markierung bleiben am Wort kleben („*Wort*.“)."""
     paras = []
     for para in text.split("\n"):
-        words, accent = [], False
-        for part in re.split(r"(\*)", para):
-            if part == "*":
+        words, word, seg, accent = [], [], "", False
+        for ch in para + " ":
+            if ch == "*":
+                if seg:
+                    word.append((seg, accent))
+                    seg = ""
                 accent = not accent
-                continue
-            words += [(w, accent) for w in part.split()]
+            elif ch.isspace():
+                if seg:
+                    word.append((seg, accent))
+                    seg = ""
+                if word:
+                    words.append(word)
+                    word = []
+            else:
+                seg += ch
         paras.append(words)
     return paras
+
+
+def word_width(draw, word, f) -> float:
+    return sum(draw.textlength(t, font=f) for t, _ in word)
 
 
 def wrap(draw, text: str, f, max_w: float):
@@ -87,13 +104,13 @@ def wrap(draw, text: str, f, max_w: float):
             lines.append([])
             continue
         cur, cur_w = [], 0.0
-        for w, acc in words:
-            ww = draw.textlength(w, font=f)
+        for word in words:
+            ww = word_width(draw, word, f)
             if cur and cur_w + space + ww > max_w:
                 lines.append(cur)
                 cur, cur_w = [], 0.0
             cur_w += (space if cur else 0) + ww
-            cur.append((w, acc))
+            cur.append(word)
         lines.append(cur)
     return lines
 
@@ -115,9 +132,11 @@ def draw_lines(draw, x, y, lines, f, size, fill, accent, spacing):
     end = (x, y)
     for line in lines:
         cx = x
-        for w, acc in line:
-            draw.text((cx, y), w, font=f, fill=accent if acc else fill)
-            cx += draw.textlength(w, font=f) + space
+        for word in line:
+            for t, acc in word:
+                draw.text((cx, y), t, font=f, fill=accent if acc else fill)
+                cx += draw.textlength(t, font=f)
+            cx += space
         end = (cx - space, y)
         y += size * spacing
     return y, end
@@ -196,22 +215,24 @@ def render_cover(slide, theme, title, label, total):
 
 def render_content(slide, theme, title, idx, total):
     img, d = window(theme, title, "KI tippt …", f"{idx} / {total}")
-    f, lines, size = fit(d, slide["headline"], "head", INNER, 300, SIZES["head"], 1.1)
-    head_h = len(lines) * size * 1.1
     box = (slide.get("box") or "").strip()
     body = (slide.get("body") or "").strip()
+    solo = not box  # ohne Box: größer setzen, sonst wirkt die Slide leer
+    f, lines, size = fit(d, slide["headline"], "head", INNER, 320, SIZES["head_solo" if solo else "head"], 1.1)
+    head_h = len(lines) * size * 1.1
     avail = BOTTOM - TOP - head_h - 40
     box_budget = min(620, avail - (170 if body else 0) - 40) if box else 0
     body_h = 0
     if body:
-        fb, lb, sb = fit(d, body, "body", INNER, avail - (box_budget + 80 if box else 0), SIZES["body"], 1.4)
+        fb, lb, sb = fit(d, body, "body", INNER, avail - (box_budget + 80 if box else 0),
+                         SIZES["body_solo" if solo else "body"], 1.4)
         body_h = len(lb) * sb * 1.4
     box_h = 0
     if box:
         fm, lm, sm = fit(d, box, "mono", INNER - 100, box_budget - 70, SIZES["box"], 1.45)
         box_h = len(lm) * sm * 1.45 + 70
     total_h = head_h + 40 + body_h + (80 + box_h if box else 0)
-    y = TOP + max(0, (BOTTOM - TOP - total_h) * 0.35)
+    y = TOP + max(0, (BOTTOM - TOP - total_h) * 0.4)
 
     y, _ = draw_lines(d, X, y, lines, f, size, theme.text, theme.accent, 1.1)
     y += 40 - size * 0.1
@@ -273,8 +294,16 @@ def render_post(post_dir: Path, cfg: dict) -> list[Path]:
 if __name__ == "__main__":
     from .common import load_config
 
-    ap = argparse.ArgumentParser(description="Slides für einen Post-Ordner neu rendern")
-    ap.add_argument("post_dir", type=Path)
+    from .common import queue_items
+
+    ap = argparse.ArgumentParser(description="Slides neu rendern (ein Ordner oder --queue für alle wartenden Posts)")
+    ap.add_argument("post_dir", type=Path, nargs="?")
+    ap.add_argument("--queue", action="store_true", help="alle Posts in queue/ neu rendern")
     args = ap.parse_args()
-    for p in render_post(args.post_dir, load_config()):
-        print(p)
+    cfg = load_config()
+    dirs = queue_items() if args.queue else [args.post_dir]
+    if not dirs or dirs == [None]:
+        raise SystemExit("Nichts zu rendern.")
+    for d in dirs:
+        render_post(d, cfg)
+        print(f"✓ {d.name}")
