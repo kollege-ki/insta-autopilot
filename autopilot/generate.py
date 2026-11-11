@@ -170,6 +170,48 @@ def posts_tool(cfg: dict) -> dict:
 
 # ---------------------------------------------------------------- Logik
 
+class TruncatedError(RuntimeError):
+    pass
+
+
+class UnusableError(RuntimeError):
+    pass
+
+
+def valid_post(post) -> bool:
+    return (isinstance(post, dict) and post.get("title") and post.get("caption")
+            and isinstance(post.get("slides"), list) and len(post["slides"]) >= 2
+            and all(isinstance(x, dict) and x.get("headline") for x in post["slides"]))
+
+
+def _normalize(data, key: str) -> dict | None:
+    """Bringt abweichende Tool-Antworten in die Form {key: [...]}.
+    Beobachtet bzw. abgesichert: Liste als JSON-Text, anderer Feldname, Einzelobjekt, Liste direkt."""
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return None
+    if isinstance(data, list):
+        return {key: data}
+    if not isinstance(data, dict):
+        return None
+    value = data.get(key)
+    if isinstance(value, str):
+        try:
+            value = json.loads(value)
+        except json.JSONDecodeError:
+            value = None
+    if isinstance(value, list):
+        return {key: value}
+    if key == "posts" and isinstance(data.get("slides"), list):
+        return {key: [data]}  # ein einzelner Post statt Liste
+    lists = [v for v in data.values() if isinstance(v, list)]
+    if len(lists) == 1:
+        return {key: lists[0]}
+    return None
+
+
 def _extract_json(text: str, key: str) -> dict | None:
     """Fallback: JSON-Objekt aus einer Textantwort holen."""
     text = re.sub(r"```(?:json)?", "", text)
@@ -197,7 +239,7 @@ def call_claude(cfg: dict, system: str, user: str, tool: dict, temperature: floa
         headers["anthropic-workspace-id"] = os.environ["ANTHROPIC_WORKSPACE_ID"]
     body = {
         "model": cfg["model"],
-        "max_tokens": 16000,
+        "max_tokens": 20000,
         "temperature": temperature,
         "system": system + f"\n\nAUSGABE: Antworte ausschließlich, indem du das Tool {tool['name']} genau einmal aufrufst. Kein Text davor oder danach.",
         "messages": [{"role": "user", "content": user}],
@@ -215,15 +257,22 @@ def call_claude(cfg: dict, system: str, user: str, tool: dict, temperature: floa
         break
     if r.status_code != 200:
         raise SystemExit(f"Claude-API-Fehler {r.status_code}: {r.text[:500]}")
-    content = r.json().get("content", [])
+    data_all = r.json()
+    content = data_all.get("content", [])
+    if data_all.get("stop_reason") == "max_tokens":
+        raise TruncatedError("Antwort wurde abgeschnitten")
     for block in content:
         if block.get("type") == "tool_use" and block.get("name") == tool["name"]:
-            return block["input"]
+            normalized = _normalize(block.get("input"), result_key)
+            if normalized is not None:
+                return normalized
     text = "".join(b.get("text", "") for b in content if b.get("type") == "text")
-    data = _extract_json(text, result_key)
+    data = _normalize(_extract_json(text, result_key), result_key) if text else None
     if data:
         return data
-    raise SystemExit(f"Claude hat kein verwertbares Ergebnis geliefert. Antwortanfang: {text[:300]}")
+    blocks = [b.get("type") for b in content]
+    raise UnusableError(f"Kein verwertbares Ergebnis (stop_reason={data_all.get('stop_reason')}, Blöcke={blocks}). "
+                        f"Antwortanfang: {text[:300] or str(content)[:300]}")
 
 
 def pick_pillars(cfg: dict, count: int) -> list[dict]:
@@ -329,19 +378,47 @@ Gib die Ideen über das Tool submit_ideas zurück.""", ideas_tool(cfg), temperat
     TMP.mkdir(exist_ok=True)
     (TMP / "ideas.json").write_text(json.dumps({"all": ideas, "chosen": chosen}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Stufe 2 – Ausschreiben
-    brief = "\n".join(f"{i + 1}. [{x['pillar']} / {x['format']}] {x['title']} – Dreh: {x['twist']}" for i, x in enumerate(chosen))
-    posts = call_claude(cfg, system, f"""Schreib diese {len(chosen)} Ideen als fertige Karussells aus, in dieser Reihenfolge:
+    # Stufe 2 – Ausschreiben, in kleinen Paketen (lange Antworten werden sonst abgeschnitten)
+    rules = FORMAT_RULES.format(smin=c['slides_min'], smax=c['slides_max'], hmax=c['hashtags_max'])
+    ctx = context_block(cfg)
+
+    def write(batch: list[dict]) -> list[dict]:
+        brief = "\n".join(f"{i + 1}. [{x['pillar']} / {x['format']}] {x['title']} – Dreh: {x['twist']}"
+                          for i, x in enumerate(batch))
+        result = call_claude(cfg, system, f"""Schreib diese {len(batch)} Ideen als fertige Karussells aus, in dieser Reihenfolge:
 {brief}
 
-{FORMAT_RULES.format(smin=c['slides_min'], smax=c['slides_max'], hmax=c['hashtags_max'])}
+{rules}
 
 Halte den Dreh jeder Idee durch – nicht beim Ausschreiben in Standard-Formulierungen zurückfallen.
 Jede Slide muss für sich einen Grund liefern, weiterzuwischen.
 
-{context_block(cfg)}
+{ctx}
 
-Gib die Posts über das Tool submit_posts zurück.""", posts_tool(cfg), temperature=0.8)["posts"]
+Gib die Posts über das Tool submit_posts zurück.""", posts_tool(cfg), temperature=0.8)
+        return result.get("posts", [])
+
+    posts: list[dict] = []
+    for start in range(0, len(chosen), 2):
+        batch = chosen[start:start + 2]
+        try:
+            got = write(batch)
+        except (TruncatedError, UnusableError) as e:
+            print(f"Paket nicht verwertbar ({e}) – schreibe die Posts einzeln.", flush=True)
+            got = []
+            for idea in batch:
+                try:
+                    got += write([idea])
+                except (TruncatedError, UnusableError) as e2:
+                    print(f"WARNUNG: „{idea['title']}“ übersprungen: {e2}", flush=True)
+        for post in got:
+            if valid_post(post):
+                posts.append(post)
+            else:
+                print(f"WARNUNG: unvollständiger Post übersprungen: {str(post)[:120]}", flush=True)
+        print(f"✓ {len(posts)}/{len(chosen)} Posts ausgeschrieben", flush=True)
+    if not posts:
+        raise SystemExit("Keine verwertbaren Posts erhalten.")
     return posts, chosen
 
 
@@ -365,6 +442,8 @@ def write_pr_body(dirs: list[Path]) -> None:
 
 
 def main() -> None:
+    import sys
+    sys.stdout.reconfigure(line_buffering=True)
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", default="", help="Anzahl Posts (Standard aus config.yaml)")
     ap.add_argument("--from-json", type=Path, help="Posts aus Datei statt von Claude (zum Testen)")
