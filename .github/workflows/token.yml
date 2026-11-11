@@ -1,0 +1,41 @@
+name: 4 · Token verlängern
+
+on:
+  schedule:
+    - cron: "0 4 1,15 * *"   # zweimal im Monat – der Token läuft nach 60 Tagen ab
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Token verlängern und als Secret speichern
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          python -m autopilot.token_tools refresh "$RUNNER_TEMP/token"
+          echo "::add-mask::$(cat "$RUNNER_TEMP/token")"
+          gh secret set IG_ACCESS_TOKEN --repo "${{ github.repository }}" < "$RUNNER_TEMP/token"
+          rm "$RUNNER_TEMP/token"
+
+  check:
+    needs: refresh
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Verbindung prüfen
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python -m autopilot.token_tools whoami

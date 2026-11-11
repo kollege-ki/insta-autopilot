@@ -1,0 +1,24 @@
+name: 5 · Vorlage exportieren
+
+on:
+  workflow_dispatch:
+    inputs:
+      with_case:
+        description: "Fallstudie mit echten Zahlen beilegen"
+        type: boolean
+        default: true
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m autopilot.export_template ${{ inputs.with_case && '--with-case' || '' }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: insta-autopilot-vorlage
+          path: dist/*.zip

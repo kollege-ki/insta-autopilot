@@ -1,0 +1,44 @@
+name: 1 · Content generieren
+
+on:
+  schedule:
+    - cron: "0 17 * * 0"   # Sonntag 18:00 MEZ / 19:00 MESZ
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Anzahl Posts (leer = Wert aus config.yaml)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      PR_BRANCH: content/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Schriften
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-inter fonts-dejavu-core
+      - run: pip install -r requirements.txt
+      - name: Posts erzeugen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m autopilot.generate --count "${{ inputs.count }}"
+      - name: Pull Request zur Freigabe
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}   # mit GH_PAT löst der PR auch das Cockpit-Update aus
+          branch: ${{ env.PR_BRANCH }}
+          title: "Neue Posts zur Freigabe (${{ github.run_number }})"
+          body-path: .autopilot/pr_body.md
+          commit-message: "Neue Posts zur Freigabe"
+          add-paths: queue/
+          delete-branch: true

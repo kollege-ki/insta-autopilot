@@ -1,0 +1,45 @@
+name: 3 · Insights, Statistik & Cockpit
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # täglich in der Früh
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: publish   # nicht gleichzeitig mit dem Posten committen
+  cancel-in-progress: false
+
+jobs:
+  insights:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Insights holen und auswerten
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python -m autopilot.insights
+      - name: Statistik, Meilensteine und Dashboard
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GH_TOKEN: ${{ github.token }}
+          HAS_ANTHROPIC: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+          HAS_IG: ${{ secrets.IG_ACCESS_TOKEN != '' }}
+          HAS_PAT: ${{ secrets.GH_PAT != '' }}
+        run: python -m autopilot.stats
+      - name: Änderungen speichern
+        run: |
+          git config user.name "insta-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A data docs
+          git diff --cached --quiet || (git commit -m "Insights aktualisiert" && git push)
