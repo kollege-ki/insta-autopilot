@@ -62,15 +62,26 @@ HARTE REGELN – niemals brechen:
 
 
 FORMAT_RULES = """FORMAT PRO POST:
-- Slide 1 (Cover): headline = Hook, max. ca. 12 Wörter, erzeugt eine offene Frage, die erst Slide 2+ beantwortet.
-  body optional, 1 kurzer Satz.
-- Weitere Slides: headline max. ca. 8 Wörter, body max. ca. 40 Wörter. Ein Gedanke pro Slide.
-- Prompts, Skill-Texte oder Beispiele zum Kopieren ins Feld "box" (max. ca. 70 Wörter).
+- Slide 1 (Cover): headline = Hook, max. ca. 10 Wörter, erzeugt eine offene Frage, die erst Slide 2+ beantwortet.
+  body optional: 1 kurzer Satz, der neugierig macht – keine Inhaltsangabe des Posts.
+- Weitere Slides: headline max. ca. 7 Wörter, body max. ca. 25 Wörter. Ein Gedanke pro Slide.
+- Prompts, Skill-Texte oder Beispiele zum Kopieren ins Feld "box" (max. ca. 50 Wörter). Listen in der box knapp
+  im Stil „Termin fehlt → nächster Dienstag“, keine ganzen Sätze.
+- Markiere pro Slide 1–2 Schlüsselwörter mit *Sternchen* (werden in der Akzentfarbe gesetzt). Nie ganze Sätze markieren.
 - {smin} bis {smax} Slides. Eine Abschluss-Slide mit Follow-Aufruf wird automatisch angehängt – NICHT selbst schreiben.
 - caption: 2–5 kurze Absätze, bringt einen Zusatz-Gedanken (nicht nur Wiederholung), endet mit einer
   konkreten Frage an die Community. Keine Hashtags in der caption.
 - hashtags: 3–{hmax} spezifische Hashtags ohne #-Zeichen.
-- review_notes: alles, was ein Mensch vor dem Posten prüfen sollte. Leer lassen, wenn nichts."""
+- review_notes: alles, was ein Mensch vor dem Posten prüfen sollte. Leer lassen, wenn nichts.
+
+SPRACHSTIL – so, wie ein kluger Kollege beim Kaffee redet:
+- Kurze Sätze. Verben statt Hauptwörter („Sie erfindet“ statt „Lücken werden still gefüllt“).
+- Aktiv und direkt, Du-Form. Gerne mal ein Gedankenstrich oder eine knappe Pointe.
+- Keine Labels wie „Der Fehler:“, „Beispiel:“, „Schwäche 1:“, „Schritt 2:“ vor die Headline setzen –
+  die Headline sagt die Sache selbst.
+- Nenne NIE die internen Namen von Säulen oder Formaten im Text (z. B. „Tool-Check“, „Rückwärts“, „Rezept“,
+  „Mythos vs. Realität“) – das Format wird gezeigt, nicht angekündigt.
+- Kein Erklär-Deutsch, keine Schachtelsätze, keine Füllwörter („eigentlich“, „grundsätzlich“, „im Prinzip“)."""
 
 
 def context_block(cfg: dict) -> str:
@@ -252,10 +263,18 @@ def select_ideas(ideas: list[dict], plan: list[dict]) -> list[dict]:
 
 
 def lint(post: dict, cfg: dict) -> list[str]:
-    """Findet verbotene Floskeln, die trotzdem durchgerutscht sind."""
-    text = " ".join([post["caption"]] + [" ".join(s.values()) for s in post["slides"]])
-    hits = [p for p in cfg["content"].get("banned_phrases", []) if re.search(re.escape(p), text, re.I)]
-    return [f"Floskel „{h}“ gefunden" for h in hits]
+    """Findet verbotene Floskeln und durchgerutschte Format-/Säulennamen."""
+    text = " ".join([post["caption"]] + [" ".join(s.values()) for s in post["slides"]]).replace("*", "")
+    notes = [f"Floskel „{p}“ gefunden" for p in cfg["content"].get("banned_phrases", [])
+             if re.search(re.escape(p), text, re.I)]
+    # Säulennamen wie „Prompt“ oder „Skill“ sind normale Wörter – geprüft werden nur Formatnamen und „Tool-Check“
+    labels = ["Tool-Check"] + [f["name"].replace(" …", "") for f in cfg["content"].get("formats", [])]
+    notes += [f"Interner Name „{n}“ steht im Text" for n in labels
+              if len(n) > 5 and re.search(re.escape(n), text, re.I)]
+    long = [i + 1 for i, s in enumerate(post["slides"]) if len(s.get("body", "").split()) > 32]
+    if long:
+        notes.append("Lange Texte auf Slide " + ", ".join(map(str, long)))
+    return notes
 
 
 def clean_post(post: dict, cfg: dict) -> dict:
