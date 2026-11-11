@@ -100,11 +100,12 @@ class Instagram:
     def wait_ready(self, container_id: str, timeout: int = 300) -> None:
         start = time.time()
         while True:
-            status = self.get(container_id, fields="status_code").get("status_code")
+            info = self.get(container_id, fields="status_code,status")
+            status = info.get("status_code")
             if status == "FINISHED":
                 return
             if status in ("ERROR", "EXPIRED"):
-                raise InstagramError(f"Container {container_id} Status {status}")
+                raise InstagramError(f"Container {container_id} Status {status}: {info.get('status', '')}")
             if time.time() - start > timeout:
                 raise InstagramError(f"Container {container_id} nach {timeout}s nicht fertig ({status})")
             time.sleep(5)
@@ -122,6 +123,30 @@ class Instagram:
                            children=",".join(children), caption=caption)
         self.wait_ready(parent["id"])
         published = self.post(f"{self.user_id}/media_publish", creation_id=parent["id"])
+        return published["id"]
+
+    def publish_reel(self, video_path, caption: str, share_to_feed: bool = False,
+                     thumb_offset_ms: int | None = None) -> str:
+        """Reel per „resumable upload“: Container anlegen, Video direkt zu Meta hochladen,
+        auf die Verarbeitung warten, veröffentlichen. Das Video braucht keine öffentliche URL."""
+        from pathlib import Path
+
+        video = Path(video_path)
+        params = {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
+                  "share_to_feed": "true" if share_to_feed else "false"}
+        if thumb_offset_ms is not None:
+            params["thumb_offset"] = str(thumb_offset_ms)
+        container = self.post(f"{self.user_id}/media", **params)
+        cid = container["id"]
+        version = self.base.rsplit("/", 1)[-1]
+        uri = container.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{version}/{cid}"
+        data = video.read_bytes()
+        r = requests.post(uri, data=data, timeout=600, headers={
+            "Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(len(data))})
+        if r.status_code >= 400:
+            raise InstagramError(f"Video-Upload fehlgeschlagen: {r.status_code} {r.text[:300]}")
+        self.wait_ready(cid, timeout=900)
+        published = self.post(f"{self.user_id}/media_publish", creation_id=cid)
         return published["id"]
 
     def publishing_quota(self) -> dict:

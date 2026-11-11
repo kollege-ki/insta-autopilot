@@ -14,8 +14,8 @@ from statistics import mean
 from .common import (HISTORY_FILE, INSIGHTS_CSV, LEARNINGS_FILE, STATE_FILE, load_config,
                      load_json, now, save_json)
 
-METRICS = ["reach", "saved", "shares", "likes", "comments", "total_interactions"]
-FIELDS = ["folder", "title", "pillar", "format", "slot", "weekday", "posted_at", "media_id"] + METRICS + ["score"]
+METRICS = ["reach", "saved", "shares", "likes", "comments", "total_interactions", "views"]
+FIELDS = ["type", "folder", "title", "pillar", "format", "slot", "weekday", "posted_at", "media_id"] + METRICS + ["score"]
 WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
 
 
@@ -40,17 +40,22 @@ def fetch(cfg: dict) -> list[dict]:
         posted = datetime.fromisoformat(h["posted_at"])
         if posted > cutoff:
             continue  # erst nach 24 h aussagekräftig
-        if posted < frozen and h["media_id"] in old:
-            # ältere Posts ändern sich kaum – vorhandene Werte übernehmen, spart API-Aufrufe
-            r = old[h["media_id"]]
-            rows.append({**r, **{m: int(r.get(m) or 0) for m in METRICS + ["score"]}})
-            continue
-        vals = ig.insights(h["media_id"], METRICS)
-        row = {**{k: h.get(k, "") for k in ("folder", "title", "pillar", "format", "slot", "media_id", "posted_at")},
-               "weekday": WEEKDAYS[posted.weekday()]}
-        row.update({m: int(vals.get(m, 0) or 0) for m in METRICS})
-        row["score"] = score(row)
-        rows.append(row)
+        targets = [("karussell", h["media_id"])]
+        if h.get("reel_media_id"):
+            targets.append(("reel", h["reel_media_id"]))
+        for kind, mid in targets:
+            if posted < frozen and mid in old:
+                # ältere Posts ändern sich kaum – vorhandene Werte übernehmen, spart API-Aufrufe
+                r = old[mid]
+                rows.append({**r, "type": r.get("type") or kind,
+                             **{m: int(r.get(m) or 0) for m in METRICS + ["score"]}})
+                continue
+            vals = ig.insights(mid, METRICS)
+            row = {**{k: h.get(k, "") for k in ("folder", "title", "pillar", "format", "slot", "posted_at")},
+                   "type": kind, "media_id": mid, "weekday": WEEKDAYS[posted.weekday()]}
+            row.update({m: int(vals.get(m, 0) or 0) for m in METRICS})
+            row["score"] = score(row)
+            rows.append(row)
     return rows
 
 
@@ -61,8 +66,10 @@ def group(rows, key):
     return g
 
 
-def summarize(rows: list[dict], cfg: dict) -> None:
+def summarize(all_rows: list[dict], cfg: dict) -> None:
     state = load_json(STATE_FILE, {})
+    reels = [r for r in all_rows if r.get("type") == "reel"]
+    rows = [r for r in all_rows if r.get("type", "karussell") != "reel"]  # Uhrzeit-/Säulen-Vergleich nur über Karussells
     min_n = cfg["posting"]["min_posts_per_slot"]
     lines = [f"# Learnings (Stand {now(cfg):%d.%m.%Y}, {len(rows)} ausgewertete Posts)", ""]
     if not rows:
@@ -105,6 +112,10 @@ def summarize(rows: list[dict], cfg: dict) -> None:
         lines += ["", "## Flops – diese Richtung meiden"]
         lines += [f"- „{r['title']}“ ({r['pillar']}, {r['format'] or '–'})" for r in top[-3:]]
 
+    if reels:
+        lines += ["", "## Reels vs. Karussells (Ø Reichweite, Anzahl)",
+                  f"- Karussells: {mean(r['reach'] for r in rows):.0f} ({len(rows)})",
+                  f"- Reels: {mean(r['reach'] for r in reels):.0f} ({len(reels)})"]
     LEARNINGS_FILE.write_text("\n".join(lines) + "\n", encoding="utf-8")
     save_json(STATE_FILE, state)
 

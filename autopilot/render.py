@@ -142,6 +142,32 @@ def draw_lines(draw, x, y, lines, f, size, fill, accent, spacing):
     return y, end
 
 
+def visible_chars(lines) -> int:
+    return sum(len(t) for line in lines for word in line for t, _ in word)
+
+
+def truncate(lines, n: int):
+    """Nur die ersten n sichtbaren Zeichen – für den Tipp-Effekt im Reel. Das Layout bleibt gleich."""
+    out = []
+    for line in lines:
+        new_line = []
+        for word in line:
+            new_word = []
+            for t, acc in word:
+                if n <= 0:
+                    break
+                new_word.append((t[:n], acc))
+                n -= len(t)
+            if new_word:
+                new_line.append(new_word)
+            if n <= 0:
+                break
+        out.append(new_line)
+        if n <= 0:
+            break
+    return out
+
+
 # ---------------------------------------------------------------- Fenster
 
 class Theme:
@@ -194,7 +220,8 @@ BOTTOM = H - M - STATUS_H - 70
 
 # ---------------------------------------------------------------- Slides
 
-def render_cover(slide, theme, title, label, total):
+def render_cover(slide, theme, title, label, total, reveal: int | None = None, cursor_on: bool = True):
+    """reveal = Anzahl sichtbarer Zeichen der Headline (Tipp-Effekt im Reel); None = alles."""
     img, d = window(theme, title, "KI tippt …", f"1 / {total}")
     d.text((X, TOP), f"# {label.upper()}", font=font("mono_bold", 26), fill=theme.accent)
     f, lines, size = fit(d, slide["headline"], "head", INNER - 60, 560, SIZES["cover"], 1.08)
@@ -206,9 +233,15 @@ def render_cover(slide, theme, title, label, total):
         body_h = len(lb) * sb * 1.35 + 50
     top = TOP + 100
     y = top + max(0, (BOTTOM - top - head_h - body_h) * 0.3)
-    y, (ex, ey) = draw_lines(d, X, y, lines, f, size, theme.text, theme.accent, 1.08)
-    cursor(d, theme, ex, ey, size)
-    if body:
+    typing = reveal is not None and reveal < visible_chars(lines)
+    shown = truncate(lines, reveal) if typing else lines
+    y_end, (ex, ey) = draw_lines(d, X, y, shown, f, size, theme.text, theme.accent, 1.08)
+    if typing and not shown:
+        ex, ey = X - size * 0.16, y
+    if cursor_on:
+        cursor(d, theme, ex, ey, size)
+    y = y + len(lines) * size * 1.08
+    if body and not typing:
         draw_lines(d, X, y + 50 - size * 0.08, lb, fb, sb, theme.muted, theme.accent, 1.35)
     return img
 
@@ -249,14 +282,15 @@ def render_content(slide, theme, title, idx, total):
     return img
 
 
-def render_cta(cta, theme, title, handle, total):
+def render_cta(cta, theme, title, handle, total, cursor_on: bool = True):
     img, d = window(theme, title, "gespeichert", f"{total} / {total}")
     f, lines, size = fit(d, cta["headline"], "head", INNER - 60, 480, (84, 60), 1.08)
     fb, lb, sb = fit(d, cta["body"], "body", INNER, 220, SIZES["body"], 1.4)
     block = len(lines) * size * 1.08 + 44 + len(lb) * sb * 1.4 + 120
     y = TOP + max(0, (BOTTOM - TOP - block) * 0.4)
     y, (ex, ey) = draw_lines(d, X, y, lines, f, size, theme.text, theme.accent, 1.08)
-    cursor(d, theme, ex, ey, size)
+    if cursor_on:
+        cursor(d, theme, ex, ey, size)
     y, _ = draw_lines(d, X, y + 44 - size * 0.08, lb, fb, sb, theme.muted, theme.accent, 1.4)
     d.text((X, y + 40), handle, font=font("head", 54), fill=theme.accent)
     if cta.get("footer"):
@@ -287,6 +321,12 @@ def render_post(post_dir: Path, cfg: dict) -> list[Path]:
     render_cta(cfg["content"]["cta_slide"], theme, title, handle, total).save(p, "JPEG", quality=92, optimize=True)
     out.append(p)
     post["images"] = [x.name for x in out]
+    post.pop("reel", None)
+    if cfg.get("reels", {}).get("enabled"):
+        from .reel import build_reel
+        info = build_reel(post_dir, post, cfg)
+        if info:
+            post["reel"] = info
     (post_dir / "post.json").write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return out
 

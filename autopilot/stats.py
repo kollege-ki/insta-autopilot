@@ -102,7 +102,8 @@ def load_posts() -> list[dict]:
     if not INSIGHTS_CSV.exists():
         return []
     with open(INSIGHTS_CSV, encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
+        # Karussells; Reels haben eigene Reichweiten und würden den Vergleich verzerren
+        rows = [r for r in csv.DictReader(f) if r.get("type", "karussell") != "reel"]
     for r in rows:
         r["d"] = datetime.fromisoformat(r["posted_at"]).date()
         for k in ("reach", "saved", "shares", "likes", "comments", "score"):

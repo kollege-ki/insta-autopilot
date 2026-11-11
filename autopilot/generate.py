@@ -434,6 +434,8 @@ def write_pr_body(dirs: list[Path]) -> None:
         if repo and branch:
             lines += [" ".join(f'<img src="https://raw.githubusercontent.com/{repo}/{branch}/queue/{d.name}/{img}" width="160">'
                                for img in post["images"]), ""]
+        if post.get("reel") and repo and branch:
+            lines += [f"▶ [Reel ansehen ({post['reel']['seconds']} s)](https://github.com/{repo}/blob/{branch}/queue/{d.name}/{post['reel']['file']})", ""]
         if post.get("review_notes"):
             lines += [f"> ⚠️ **Bitte prüfen:** {post['review_notes']}", ""]
         lines += ["<details><summary>Caption</summary>", "", post["caption_final"], "", "</details>", ""]

@@ -93,8 +93,13 @@ def main() -> None:
     urls = [f"{base}/queue/{item.name}/{img}" for img in post["images"]]
     print(f"→ Poste {item.name} ({len(urls)} Slides)")
 
+    reel_cfg = cfg.get("reels", {})
+    reel_file = item / post.get("reel", {}).get("file", "reel.mp4")
+    want_reel = reel_cfg.get("enabled") and reel_file.exists()
+
     if args.dry_run:
         print("Dry-Run – Bild-URLs:\n  " + "\n  ".join(urls))
+        print("Reel: " + (f"{reel_file.name} ({post.get('reel', {}).get('seconds', '?')} s)" if want_reel else "keins"))
         print("Caption:\n" + post["caption_final"])
         return
 
@@ -110,12 +115,30 @@ def main() -> None:
     POSTED.mkdir(exist_ok=True)
     shutil.move(str(item), str(POSTED / item.name))
 
-    history.append({
+    entry = {
         "folder": item.name, "title": post["title"], "pillar": post["pillar"], "format": post.get("format", ""),
         "media_id": media_id, "permalink": permalink,
         "posted_at": tz_now.isoformat(timespec="minutes"), "slot": slot or "manuell",
-    })
+    }
+    history.append(entry)
     save_json(HISTORY_FILE, history)
+
+    # Reel zum selben Thema – ein Fehler hier stoppt nichts, das Karussell ist ja schon online
+    if want_reel:
+        moved = POSTED / item.name
+        try:
+            reel_id = ig.publish_reel(moved / reel_file.name, post["caption_final"],
+                                      share_to_feed=bool(reel_cfg.get("share_to_feed", False)),
+                                      thumb_offset_ms=post.get("reel", {}).get("thumb_offset_ms"))
+            reel_link = ig.permalink(reel_id)
+            print(f"✓ Reel veröffentlicht: {reel_id} {reel_link}")
+            entry.update(reel_media_id=reel_id, reel_permalink=reel_link)
+            post["published"].update(reel_media_id=reel_id, reel_permalink=reel_link)
+        except Exception as e:  # noqa: BLE001
+            gh_warning(f"Reel nicht veröffentlicht: {e}")
+            post["published"]["reel_error"] = str(e)[:300]
+        (moved / "post.json").write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        save_json(HISTORY_FILE, history)
 
 
 if __name__ == "__main__":
