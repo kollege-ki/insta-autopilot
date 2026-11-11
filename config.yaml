@@ -108,6 +108,12 @@ content:
     - "Allgemeine ChatGPT-Tipps, die jeder schon kennt (Rolle geben, Kontext geben, …)"
     - "Geld verdienen mit KI, Side-Hustle, Einkommen"
 
+# Reels: aus jedem Karussell automatisch ein kurzes Video
+reels:
+  enabled: true
+  share_to_feed: false        # false = nur im Reels-Bereich, das Profil-Raster bleibt reine Karussells
+  music_dir: "assets/music"   # optional: lizenzfreie MP3s hier ablegen, sonst stille Tonspur
+
 posting:
   timezone: "Europe/Vienna"
   posts_per_day: 1
@@ -134,6 +140,6 @@ instagram:
 roadmap:
   - {title: "Setup & erste 30 Posts", posts: 30, todo: "Danach Learnings lesen, Frequenz prüfen"}
   - {title: "Erste 500 Follower", followers: 500, todo: "Kommentar-Keyword → DM mit Link einrichten, erste Affiliate-Links"}
-  - {title: "1.000 Follower", followers: 1000, todo: "Phase 2: Text-Reels mit KI-Stimme dazunehmen"}
+  - {title: "1.000 Follower", followers: 1000, todo: "Reels ausbauen: lizenzfreie Musik oder KI-Stimme, eigene Reel-Hooks"}
   - {title: "2.500 Follower", followers: 2500, todo: "Skill-Pack bzw. Gesamtvorlage verkaufen (Workflow „5 · Vorlage exportieren“)"}
   - {title: "10.000 Follower", followers: 10000, todo: "Kooperationen, Newsletter, eigenes Produkt ausbauen"}

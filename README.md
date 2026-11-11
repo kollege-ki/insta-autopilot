@@ -92,6 +92,18 @@ Ab dann läuft alles von selbst.
   `- Meilenstein: …` unter das Datum. Änderungen an `config.yaml` werden automatisch erfasst.
 - **Monatlich:** `data/learnings.md` lesen. Wenn die Qualität passt, `posts_per_day` auf 2 erhöhen.
 
+## Reels
+
+Aus jedem Karussell entsteht automatisch ein Reel (1080×1920, ca. 20–35 Sekunden):
+die Headline wird getippt, der Cursor blinkt, dann laufen die Slides durch.
+Veröffentlicht wird es direkt nach dem Karussell – standardmäßig **nur im Reels-Bereich**
+(`reels.share_to_feed: false`), damit das Profil-Raster aus Karussells besteht.
+Reels erreichen vor allem Leute, die dir noch nicht folgen.
+
+- **Musik:** lizenzfreie MP3s in `assets/music/` legen – dann wird zufällig eine gewählt. Sonst stille Tonspur.
+- **Ausschalten:** `reels.enabled: false` in `config.yaml`.
+- **Nach einer Design-Änderung:** „7 · Slides und Reels neu rendern“ zeichnet alle wartenden Posts samt Reel neu.
+
 ## Tracking & Verkaufsvorlage
 
 Alles wird von Tag 1 an mitgeschrieben, damit du später zeigen und verkaufen kannst, was funktioniert:
@@ -148,14 +160,14 @@ docs/          das Cockpit (index.html)
 | 4 · Token verlängern | 1. und 15. | `IG…`-Token erneuern (EAA-Tokens laufen nicht ab) |
 | 5 · Vorlage exportieren | manuell | Verkaufsvorlage als ZIP |
 | 6 · Cockpit aktualisieren | bei Freigabe, Journal-/Config-Änderung | Cockpit sofort neu |
+| 7 · Slides und Reels neu rendern | manuell | wartende Posts im aktuellen Design neu zeichnen |
 
 Einzelnen Post neu rendern (lokal): `python -m autopilot.render queue/<ordner>`
 
 ## Grenzen (ehrlich)
 
 - **Uhrzeit:** GitHub startet geplante Läufe teils mit Verzögerung – Posts kommen ±30 Min. um den Slot.
-- **Reels** sind noch nicht drin (Phase 2: Text-Reels mit KI-Stimme). Für den Start reichen Karussells –
-  sie werden gespeichert und geteilt, und genau das zählt für Reichweite.
+- **Reels** haben keine Musik aus der Instagram-Bibliothek – die API erlaubt das nicht. Eigene lizenzfreie Musik geht (siehe oben).
 - **„Kommentiere SKILL → DM mit Link“** ist noch nicht drin (Phase 2 oder ManyChat).
 - **Rechtliches (AT):** Offenlegung nach Mediengesetz in die Bio bzw. auf eine verlinkte Seite,
   Affiliate-Links als Werbung kennzeichnen. Der KI-Hinweis steht automatisch in jeder Caption.
