@@ -1,0 +1,58 @@
+{
+  "pillar": "tool",
+  "format": "experiment",
+  "title": "Blindtest: Dieselbe Frage an drei Chatbots, ohne Namen",
+  "slides": [
+    {
+      "headline": "Würdest du deinen *Lieblings-Chatbot* ohne Logo erkennen?",
+      "body": "Ein Test, bei dem die Markenliebe nicht mitstimmen darf."
+    },
+    {
+      "headline": "Du bewertest oft den *Namen*",
+      "body": "Wer einen Favoriten hat, liest dessen Antworten wohlwollender. Gut möglich. Der Blindtest zeigt dir, ob das bei dir auch so ist."
+    },
+    {
+      "headline": "Such dir eine Aufgabe mit *prüfbarer* Antwort",
+      "body": "Aus deinem Alltag, und du solltest erkennen, ob die Lösung stimmt. Sonst bewertest du nur Tonfall.",
+      "box": "Ich habe eine Liste mit Kundenadressen, viele Dubletten. Wie bereinige ich sie in Excel? Schritte nennen. Dazu: woran sehe ich, dass es geklappt hat?"
+    },
+    {
+      "headline": "Gleicher Wortlaut, drei *frische* Chats",
+      "body": "Prompt Wort für Wort kopieren. Jedes Mal ein neuer Chat, kein Vorwissen, keine Nachfragen. Sonst vergleichst du Gespräche statt Antworten."
+    },
+    {
+      "headline": "Namen weg, Reihenfolge *auslosen*",
+      "body": "Antworten in drei Notizen kopieren. Begrüßung und Schlussfrage löschen, die verraten oft den Absender. Dann ziehst du, welche Notiz A, B oder C wird.",
+      "box": "Drei Zettel: Notiz 1, 2, 3 → mischen → ziehen\n1. Zug = A\n2. Zug = B\n3. Zug = C\nZuordnung Chatbot → Notiz: verdeckt lassen"
+    },
+    {
+      "headline": "Drei Fragen pro Antwort, *0 bis 2* Punkte",
+      "body": "Erst alle drei Antworten lesen, dann punkten. Wichtig: Bei „korrekt“ wirklich nachschlagen, nicht nur nach Bauchgefühl entscheiden.",
+      "box": "nützlich → loslegen ohne Rückfrage?\nkorrekt → 2 Aussagen nachgeprüft, stimmen sie?\nprüfbar → Schritte oder Quellen genannt, Unsicherheit benannt?"
+    },
+    {
+      "headline": "Erst *werten*, dann aufdecken",
+      "body": "Punkte notieren, dann Zettel umdrehen. Überrascht dich der Sieger? Dann hat bisher dein Bauchgefühl mitgespielt. Ein Durchgang ist aber nur eine Stichprobe."
+    }
+  ],
+  "caption": "Ein Durchgang sagt nur etwas über diese eine Aufgabe. Ein Chatbot kann bei Excel glänzen und bei Mails schwächeln. Wiederhol den Test deshalb mit einer zweiten Aufgabe aus einem anderen Bereich.\n\nTools verändern sich außerdem laufend. Das Ergebnis von heute ist in ein paar Monaten vielleicht schon überholt. Der Bogen bleibt gleich, nur die Antworten ändern sich.\n\nSpeicher dir die drei Kriterien: nützlich, korrekt, prüfbar. Damit kannst du jede KI-Antwort bewerten, auch ohne Blindtest.\n\nWelche Aufgabe würdest du für deinen Blindtest nehmen?",
+  "hashtags": [
+    "blindtest",
+    "chatbots",
+    "kitools",
+    "promptingdeutsch",
+    "kollegeki"
+  ],
+  "review_notes": "Keine Tool-Namen, Preise oder Feature-Angaben genannt. Keine Ergebnisse behauptet, alles als Anleitung formuliert. Beispielaufgabe nutzt Excel nur generisch, ohne Funktionsnamen. Bei Bedarf prüfen, ob die Excel-Aufgabe für die Zielgruppe passt.",
+  "caption_final": "Ein Durchgang sagt nur etwas über diese eine Aufgabe. Ein Chatbot kann bei Excel glänzen und bei Mails schwächeln. Wiederhol den Test deshalb mit einer zweiten Aufgabe aus einem anderen Bereich.\n\nTools verändern sich außerdem laufend. Das Ergebnis von heute ist in ein paar Monaten vielleicht schon überholt. Der Bogen bleibt gleich, nur die Antworten ändern sich.\n\nSpeicher dir die drei Kriterien: nützlich, korrekt, prüfbar. Damit kannst du jede KI-Antwort bewerten, auch ohne Blindtest.\n\nWelche Aufgabe würdest du für deinen Blindtest nehmen?\n\nErstellt mit KI-Unterstützung.\n\n#blindtest #chatbots #kitools #promptingdeutsch #kollegeki",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

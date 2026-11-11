@@ -1,0 +1,61 @@
+{
+  "pillar": "skill",
+  "format": "rueckwaerts",
+  "title": "Skill aus drei guten Mails rückwärts ableiten",
+  "slides": [
+    {
+      "headline": "Dein bester Mail-Stil steckt schon im Postfach.",
+      "body": "Du musst ihn nur nicht selbst aufschreiben."
+    },
+    {
+      "headline": "Regeln aufschreiben *funktioniert* nicht",
+      "body": "Frag dich, wie du schreibst. Antwort: „freundlich, kurz, klar“. Das sagt der KI nichts. Das sagt jeder."
+    },
+    {
+      "headline": "Such dir *drei* Mails raus",
+      "body": "Mails, die du selbst gut fandest. Die Antwort kam, der Ton passte, nichts musste nachgefragt werden. Namen vorher raus."
+    },
+    {
+      "headline": "Dann *rückwärts* denken lassen",
+      "box": "Hier sind drei Mails von mir, die gut funktioniert haben. Arbeite die Regeln heraus, die darin stecken: Aufbau, Tonfall, Satzlänge, Anrede, Schluss. Nur, was in mindestens zwei Mails vorkommt. Schreib daraus einen Skill-Text als Anweisung."
+    },
+    {
+      "headline": "Sie sieht, was du *übersiehst*",
+      "body": "Du schreibst aus dem Bauch. Die KI zählt nach: Womit beginnst du? Wie lang sind deine Sätze? Wie hörst du auf?"
+    },
+    {
+      "headline": "So sieht ein *Skill-Text* aus",
+      "body": "Nur ein Beispiel – deiner sieht anders aus.",
+      "box": "Mails in meinem Stil\nAnliegen → erster Satz\nSätze → max. 15 Wörter\nAnrede → Vorname, kein „Sehr geehrte“\nSchluss → eine konkrete Frage"
+    },
+    {
+      "headline": "Du liest nur noch *gegen*",
+      "body": "Streich Regeln, die nicht stimmen. Bei drei Mails kann ein Muster Zufall sein. Was bleibt, ist deine Anweisung."
+    },
+    {
+      "headline": "Dann der *Gegentest*",
+      "body": "Gib einen neuen Mail-Anlass plus Skill-Text ein. Klingt der Entwurf nach dir? Wenn nicht, schärf die Regel nach."
+    }
+  ],
+  "caption": "Die meisten Stil-Anleitungen scheitern an derselben Stelle: Wir beschreiben unseren Stil in Adjektiven. Beispiele sind besser als Adjektive – und die KI kann aus Beispielen die Regeln selbst ableiten.\n\nDas Prinzip klappt nicht nur bei Mails. Alles, was dir schon einmal gut gelungen ist – ein Angebotstext, eine Absage, eine Produktbeschreibung – kannst du so zum Skill machen.\n\nWichtig: Entferne vorher Namen, Adressen und Interna. Und lies den fertigen Skill-Text wirklich durch, er ist ein Entwurf.\n\nWelche drei Mails würdest du als Erstes durchleuchten lassen?",
+  "hashtags": [
+    "kiskills",
+    "promptvorlage",
+    "mailschreiben",
+    "kiimalltag",
+    "arbeitsorganisation"
+  ],
+  "review_notes": "Skill-Text in der Box ist ein frei erfundenes Beispiel zur Illustration (im Post als Beispiel gekennzeichnet), kein echtes Ergebnis. Datenschutz-Hinweis (Namen entfernen, keine vertraulichen Mails in beliebige Tools) ist drin – bitte prüfen, ob er dir deutlich genug ist. Keine Tool-Namen, Preise oder Features genannt. · Interner Name „Rückwärts“ steht im Text",
+  "caption_final": "Die meisten Stil-Anleitungen scheitern an derselben Stelle: Wir beschreiben unseren Stil in Adjektiven. Beispiele sind besser als Adjektive – und die KI kann aus Beispielen die Regeln selbst ableiten.\n\nDas Prinzip klappt nicht nur bei Mails. Alles, was dir schon einmal gut gelungen ist – ein Angebotstext, eine Absage, eine Produktbeschreibung – kannst du so zum Skill machen.\n\nWichtig: Entferne vorher Namen, Adressen und Interna. Und lies den fertigen Skill-Text wirklich durch, er ist ein Entwurf.\n\nWelche drei Mails würdest du als Erstes durchleuchten lassen?\n\nErstellt mit KI-Unterstützung.\n\n#kiskills #promptvorlage #mailschreiben #kiimalltag #arbeitsorganisation",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}

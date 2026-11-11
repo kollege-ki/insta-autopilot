@@ -1,0 +1,57 @@
+{
+  "pillar": "prompt",
+  "format": "rolle",
+  "title": "Der Pre-Mortem-Prompt: Die KI schreibt den Rückblick auf dein Scheitern",
+  "slides": [
+    {
+      "headline": "Dein Projekt ist *gescheitert*. Frag die KI, warum.",
+      "body": "Der Trick steckt in einem einzigen Tempus."
+    },
+    {
+      "headline": "„Was könnte *schiefgehen*?“ bringt wenig",
+      "body": "Das ist eine Möglichkeitsfrage. Du bekommst Möglichkeiten: Zeitplan, Budget, Kommunikation. Höflich, vage, harmlos."
+    },
+    {
+      "headline": "Sag stattdessen: Es *ist* passiert",
+      "body": "Das Scheitern ist Tatsache. Die KI muss nicht mehr abwägen, ob etwas schiefgeht. Sie muss erklären, *warum* es schiefging."
+    },
+    {
+      "headline": "Kopier diesen *Prompt*",
+      "body": "Setz dein Projekt in die Klammer.",
+      "box": "Es ist in 6 Monaten. Das Projekt [dein Projekt] ist gescheitert. Schreibe den Rückblick: die 5 wahrscheinlichsten Gründe, nach Wahrscheinlichkeit sortiert – und was man heute dagegen tun könnte."
+    },
+    {
+      "headline": "Lies Grund 1 *laut*",
+      "body": "Wird dir kurz mulmig? Dann hat die Antwort etwas getroffen. Der Grund, bei dem du zuckst, ist meist der wichtigste."
+    },
+    {
+      "headline": "Nimm nur *einen* Grund mit",
+      "body": "Fünf Maßnahmen machst du nicht. Eine startest du diese Woche. Schreib sie so konkret auf:",
+      "box": "Keiner fühlt sich zuständig → Verantwortliche Person im Kickoff benennen"
+    },
+    {
+      "headline": "Sie *rät* – du prüfst",
+      "body": "Das ist Fantasie mit System, keine Prognose. Die Reihenfolge ist geschätzt. Du entscheidest, welcher Grund zu deinem Team passt."
+    }
+  ],
+  "caption": "Der Unterschied liegt in der Grammatik. „Was könnte passieren?“ lässt der KI die Wahl, harmlos zu bleiben. „Es ist passiert“ nimmt ihr diese Wahl.\n\nDie Idee dahinter ist nicht neu: Rückblick-Denken gibt es in der Projektarbeit schon lange. Neu ist nur, dass du den Rückblick in Sekunden bekommst – und ihn so oft wiederholen kannst, wie du willst.\n\nProbier einen Durchlauf mit einem echten Vorhaben, das gerade ansteht. Sei kritisch bei den Gründen, die nur nach Standardfloskel klingen.\n\nWelches Projekt schickst du als Erstes in die Zukunft?",
+  "hashtags": [
+    "promptengineering",
+    "premortem",
+    "kikollege",
+    "projektmanagement",
+    "kitipps"
+  ],
+  "review_notes": "Pre-Mortem als Methode bewusst nicht einer Person zugeschrieben (kein Namens-/Jahres-Claim). Der Beispiel-Eintrag in Slide 6 ist ein erfundenes Illustrationsbeispiel, keine Erfahrung – ist als Vorlage formuliert. Keine Erfolgsaussagen gemacht.",
+  "caption_final": "Der Unterschied liegt in der Grammatik. „Was könnte passieren?“ lässt der KI die Wahl, harmlos zu bleiben. „Es ist passiert“ nimmt ihr diese Wahl.\n\nDie Idee dahinter ist nicht neu: Rückblick-Denken gibt es in der Projektarbeit schon lange. Neu ist nur, dass du den Rückblick in Sekunden bekommst – und ihn so oft wiederholen kannst, wie du willst.\n\nProbier einen Durchlauf mit einem echten Vorhaben, das gerade ansteht. Sei kritisch bei den Gründen, die nur nach Standardfloskel klingen.\n\nWelches Projekt schickst du als Erstes in die Zukunft?\n\nErstellt mit KI-Unterstützung.\n\n#promptengineering #premortem #kikollege #projektmanagement #kitipps",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "pillar": "workflow",
+  "format": "fehler",
+  "title": "Endloser Chat statt Übergabedokument",
+  "slides": [
+    {
+      "headline": "Dein KI-Chat ist zu lang. Du merkst es nur nicht.",
+      "body": "Und er vergisst ausgerechnet das, was du zuerst gesagt hast."
+    },
+    {
+      "headline": "Lange Chats *driften*",
+      "body": "Am Anfang hält sich die KI an deine Vorgaben. Nach vielen Runden rutschen Ton, Format und Regeln leise weg."
+    },
+    {
+      "headline": "Es knallt nicht. Es *schleicht*.",
+      "body": "Keine Fehlermeldung. Die Antworten werden nur nach und nach anders. Du merkst es erst, wenn du dich über das Ergebnis wunderst."
+    },
+    {
+      "headline": "Nach jedem Schritt: eine *Übergabe*",
+      "body": "Bevor du weitermachst, lässt du die KI den Stand zusammenfassen. Kurz, in drei Teilen. Wie eine Schichtübergabe."
+    },
+    {
+      "headline": "Der Prompt dafür",
+      "box": "Fasse diesen Chat als Übergabe zusammen. Max. 150 Wörter.\nZiel → ein Satz\nEntscheidungen → was feststeht, mit Grund\nOffene Punkte → was als Nächstes kommt\nNichts Neues erfinden."
+    },
+    {
+      "headline": "Dann: *neuer Chat*",
+      "body": "Übergabe kopieren, als erste Nachricht einfügen, weiterarbeiten. Der alte Chat bleibt als Archiv – du musst ihn nicht mehr anfassen."
+    },
+    {
+      "headline": "Du liest *gegen*",
+      "body": "30 Sekunden Kontrolle. Stimmen die Entscheidungen? Falsches korrigierst du jetzt – nicht erst nach zehn Runden."
+    }
+  ],
+  "caption": "Ein langer Chat fühlt sich bequem an: alles ist ja schon drin. Genau das ist die Falle. Je mehr Verlauf, desto mehr Material, in dem deine ursprünglichen Vorgaben untergehen können.\n\nDie Übergabe löst ein zweites Problem gleich mit: Du musst am Ende eines Schritts aufschreiben, was eigentlich entschieden wurde. Das klärt oft auch deinen eigenen Kopf.\n\nTipp: Speicher die Übergabe-Prompt-Vorlage als Textbaustein, dann kostet dich der Wechsel nur ein paar Sekunden.\n\nWie lang werden deine Chats – und wann hast du zuletzt einen neu gestartet?",
+  "hashtags": [
+    "kigrundlagen",
+    "promptengineering",
+    "arbeitsweise",
+    "chatgpt",
+    "claude"
+  ],
+  "review_notes": "Aussage \"lange Chats driften / vergessen Vorgaben\" ist allgemeine Beobachtung, nicht gemessen – bewusst ohne Zahlen und konkrete Kontextlimits formuliert. Verhalten kann je nach Tool/Modell variieren; manche Tools haben Projekt-/Memory-Funktionen. Keine Erfahrungswerte der Page behauptet.",
+  "caption_final": "Ein langer Chat fühlt sich bequem an: alles ist ja schon drin. Genau das ist die Falle. Je mehr Verlauf, desto mehr Material, in dem deine ursprünglichen Vorgaben untergehen können.\n\nDie Übergabe löst ein zweites Problem gleich mit: Du musst am Ende eines Schritts aufschreiben, was eigentlich entschieden wurde. Das klärt oft auch deinen eigenen Kopf.\n\nTipp: Speicher die Übergabe-Prompt-Vorlage als Textbaustein, dann kostet dich der Wechsel nur ein paar Sekunden.\n\nWie lang werden deine Chats – und wann hast du zuletzt einen neu gestartet?\n\nErstellt mit KI-Unterstützung.\n\n#kigrundlagen #promptengineering #arbeitsweise #chatgpt #claude",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}
