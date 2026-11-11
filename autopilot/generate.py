@@ -159,29 +159,60 @@ def posts_tool(cfg: dict) -> dict:
 
 # ---------------------------------------------------------------- Logik
 
+def _extract_json(text: str, key: str) -> dict | None:
+    """Fallback: JSON-Objekt aus einer Textantwort holen."""
+    text = re.sub(r"```(?:json)?", "", text)
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end <= start:
+        return None
+    try:
+        data = json.loads(text[start:end + 1])
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) and key in data else None
+
+
 def call_claude(cfg: dict, system: str, user: str, tool: dict, temperature: float = 1.0) -> dict:
+    """Ruft Claude auf und liefert das Ergebnis des Tools als dict.
+
+    Neuere Modelle erlauben teils kein erzwungenes Tool (tool_choice „tool“/„any“) und keine
+    eigene Temperatur. Deshalb wird das Tool nur angeboten und klar angewiesen; nicht
+    unterstützte Parameter werden bei einer Fehlermeldung automatisch weggelassen.
+    """
     key = require_env("ANTHROPIC_API_KEY")
+    result_key = next(iter(tool["input_schema"]["required"]))
+    headers = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    if os.environ.get("ANTHROPIC_WORKSPACE_ID"):
+        headers["anthropic-workspace-id"] = os.environ["ANTHROPIC_WORKSPACE_ID"]
     body = {
         "model": cfg["model"],
         "max_tokens": 16000,
         "temperature": temperature,
-        "system": system,
+        "system": system + f"\n\nAUSGABE: Antworte ausschließlich, indem du das Tool {tool['name']} genau einmal aufrufst. Kein Text davor oder danach.",
         "messages": [{"role": "user", "content": user}],
         "tools": [tool],
-        "tool_choice": {"type": "tool", "name": tool["name"]},
+        "tool_choice": {"type": "auto"},
     }
-    r = requests.post(API_URL, json=body, timeout=600, headers={
-        "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
-    if r.status_code == 400 and "temperature" in r.text:
-        body.pop("temperature")  # manche Modelle erlauben keine eigene Temperatur
-        r = requests.post(API_URL, json=body, timeout=600, headers={
-            "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
+    for _ in range(3):
+        r = requests.post(API_URL, json=body, timeout=600, headers=headers)
+        if r.status_code == 400 and "temperature" in r.text and "temperature" in body:
+            body.pop("temperature")
+            continue
+        if r.status_code == 400 and "tool_choice" in r.text and "tool_choice" in body:
+            body.pop("tool_choice")
+            continue
+        break
     if r.status_code != 200:
         raise SystemExit(f"Claude-API-Fehler {r.status_code}: {r.text[:500]}")
-    for block in r.json().get("content", []):
+    content = r.json().get("content", [])
+    for block in content:
         if block.get("type") == "tool_use" and block.get("name") == tool["name"]:
             return block["input"]
-    raise SystemExit("Claude hat kein Ergebnis über das Tool geliefert.")
+    text = "".join(b.get("text", "") for b in content if b.get("type") == "text")
+    data = _extract_json(text, result_key)
+    if data:
+        return data
+    raise SystemExit(f"Claude hat kein verwertbares Ergebnis geliefert. Antwortanfang: {text[:300]}")
 
 
 def pick_pillars(cfg: dict, count: int) -> list[dict]:
