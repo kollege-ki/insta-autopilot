@@ -10,5 +10,11 @@
     "source": "auto",
     "title": "Tracking gestartet",
     "details": "Modell: claude-sonnet-5-5; Posts pro Tag: 1; Uhrzeiten: 07:30, 12:15, 18:30; Slot-Modus: auto; Ideen pro Post: 4; Slides: 4–8; Säulen: tool×2, prompt×2, skill×2, workflow×1, making_of×1; Formate: 10; Verbotene Floskeln: 14; Gewichte lernen: True; Design: #0F1115/#1A1D24/#F2F2F2/#9AA3AF/#7CFFB2"
+  },
+  {
+    "date": "2026-11-11",
+    "source": "auto",
+    "title": "Einstellung geändert",
+    "details": "Design: #0F1115/#1A1D24/#F2F2F2/#9AA3AF/#7CFFB2 → #0F1115/#1A1D24/#F2F2F2/#9AA3AF/#7CFFB2/#E8E9E4"
   }
 ]
