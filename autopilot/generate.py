@@ -1,9 +1,12 @@
-"""Erzeugt einen Batch Karussell-Posts mit Claude in zwei Stufen:
+"""Erzeugt einen Batch Karussell-Posts mit Claude in drei Stufen:
 
   1. Ideen-Runde: viele ungewöhnliche Ideen (Säule × Format × überraschender Dreh),
      jede mit Selbstbewertung „Originalität" und „Nutzen".
   2. Auswahl im Code (beste Ideen, möglichst verschiedene Formate),
-     dann schreibt Claude nur die Gewinner aus.
+     dann schreibt Claude nur die Gewinner aus – bei Tool-, Workflow- und Skill-Posts
+     mit Websuche, damit Funktionen, Namen und Preise aktuell stimmen.
+  3. Kritik-Runde: Claude prüft jeden Post als strenger Redakteur gegen alle Regeln
+     und überarbeitet ihn gezielt.
 
 Danach werden die Slides gerendert und in queue/ abgelegt. Im GitHub-Workflow
 wird daraus ein Pull Request zur Freigabe am Handy.
@@ -52,8 +55,9 @@ HARTE REGELN – niemals brechen:
 2. Keine Einkommens- oder Erfolgsversprechen.
 3. Keine erfundenen Zahlen, Erfahrungen, Kundenstimmen oder Ergebnisse. Erlebnisse und Zahlen der Page
    NUR aus dem Journal und den gemessenen Stats. Sonst als Anleitung/Experiment zum Selbermachen formulieren, nicht als „ich habe“.
-4. Preise, Versionsnummern, Limits oder Feature-Details von Tools nur, wenn du dir sicher bist –
-   und dann zusätzlich in review_notes vermerken.
+4. Preise, Versionsnummern, Limits oder Feature-Details von Tools nur, wenn sie per Websuche
+   bestätigt sind (Quelle in review_notes) – sonst weglassen. Ohne Websuche: nur, wenn du dir sicher bist,
+   und dann in review_notes vermerken. Dein Wissen kann veraltet sein, Tools ändern sich laufend.
 5. Jeder Post hat einen konkreten, sofort nachmachbaren Nutzen. Kein Clickbait, den der Inhalt nicht einlöst.
 6. Verbotene Floskeln: {banned}
 7. Verbotene Themen:
@@ -225,39 +229,73 @@ def _extract_json(text: str, key: str) -> dict | None:
     return data if isinstance(data, dict) and key in data else None
 
 
-def call_claude(cfg: dict, system: str, user: str, tool: dict, temperature: float = 1.0) -> dict:
+def web_search_tool(cfg: dict) -> dict:
+    ws = cfg.get("web_search", {})
+    return {
+        "type": "web_search_20250305",
+        "name": "web_search",
+        "max_uses": ws.get("max_uses", 6),
+        "user_location": {"type": "approximate", "country": "AT",
+                          "timezone": cfg.get("posting", {}).get("timezone", "Europe/Vienna")},
+    }
+
+
+def call_claude(cfg: dict, system: str, user: str, tool: dict, temperature: float = 1.0,
+                search: bool = False) -> dict:
     """Ruft Claude auf und liefert das Ergebnis des Tools als dict.
 
     Neuere Modelle erlauben teils kein erzwungenes Tool (tool_choice „tool“/„any“) und keine
     eigene Temperatur. Deshalb wird das Tool nur angeboten und klar angewiesen; nicht
     unterstützte Parameter werden bei einer Fehlermeldung automatisch weggelassen.
+    Mit search=True darf Claude vorher im Web recherchieren (Server-Tool web_search).
     """
     key = require_env("ANTHROPIC_API_KEY")
     result_key = next(iter(tool["input_schema"]["required"]))
     headers = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
     if os.environ.get("ANTHROPIC_WORKSPACE_ID"):
         headers["anthropic-workspace-id"] = os.environ["ANTHROPIC_WORKSPACE_ID"]
+    tools = [tool] + ([web_search_tool(cfg)] if search else [])
+    hint = (" Recherchiere vorher mit web_search, wo nötig." if search else "")
+    messages: list[dict] = [{"role": "user", "content": user}]
     body = {
         "model": cfg["model"],
-        "max_tokens": 20000,
+        "max_tokens": cfg.get("max_tokens", 32000),
         "temperature": temperature,
-        "system": system + f"\n\nAUSGABE: Antworte ausschließlich, indem du das Tool {tool['name']} genau einmal aufrufst. Kein Text davor oder danach.",
-        "messages": [{"role": "user", "content": user}],
-        "tools": [tool],
+        "system": system + f"\n\nAUSGABE:{hint} Antworte am Ende ausschließlich, indem du das Tool "
+                           f"{tool['name']} genau einmal aufrufst. Kein Text danach.",
+        "messages": messages,
+        "tools": tools,
         "tool_choice": {"type": "auto"},
     }
-    for _ in range(3):
-        r = requests.post(API_URL, json=body, timeout=600, headers=headers)
-        if r.status_code == 400 and "temperature" in r.text and "temperature" in body:
-            body.pop("temperature")
-            continue
-        if r.status_code == 400 and "tool_choice" in r.text and "tool_choice" in body:
-            body.pop("tool_choice")
+    if cfg.get("effort"):
+        body["output_config"] = {"effort": cfg["effort"]}
+
+    searches = 0
+    for _ in range(8):  # Wiederholungen für Parameter-Fallbacks und pause_turn
+        r = requests.post(API_URL, json=body, timeout=900, headers=headers)
+        if r.status_code == 400:
+            dropped = next((p for p in ("temperature", "tool_choice", "output_config")
+                            if p in body and p in r.text), None)
+            if dropped:
+                print(f"Hinweis: Parameter „{dropped}“ wird vom Modell nicht akzeptiert – weggelassen.", flush=True)
+                body.pop(dropped)
+                continue
+            if search and "web search" in r.text.lower():
+                raise SystemExit("Websuche ist für diese Organisation in der Claude Console deaktiviert. "
+                                 "Dort aktivieren oder in config.yaml web_search.enabled: false setzen.")
+        if r.status_code != 200:
+            raise SystemExit(f"Claude-API-Fehler {r.status_code}: {r.text[:500]}")
+        data_all = r.json()
+        searches += sum(1 for b in data_all.get("content", []) if b.get("type") == "server_tool_use")
+        if data_all.get("stop_reason") == "pause_turn":
+            # lange Suchrunde pausiert: Antwort unverändert zurückschicken, dann läuft sie weiter
+            messages.append({"role": "assistant", "content": data_all["content"]})
             continue
         break
-    if r.status_code != 200:
-        raise SystemExit(f"Claude-API-Fehler {r.status_code}: {r.text[:500]}")
-    data_all = r.json()
+    else:
+        raise UnusableError("Zu viele Wiederholungen (pause_turn/Fallbacks)")
+    if searches:
+        print(f"  ↳ {searches} Websuche(n)", flush=True)
     content = data_all.get("content", [])
     if data_all.get("stop_reason") == "max_tokens":
         raise TruncatedError("Antwort wurde abgeschnitten")
@@ -382,20 +420,32 @@ Gib die Ideen über das Tool submit_ideas zurück.""", ideas_tool(cfg), temperat
     rules = FORMAT_RULES.format(smin=c['slides_min'], smax=c['slides_max'], hmax=c['hashtags_max'])
     ctx = context_block(cfg)
 
+    ws = cfg.get("web_search", {})
+    search_pillars = set(ws.get("pillars", [])) if ws.get("enabled") else set()
+
     def write(batch: list[dict]) -> list[dict]:
         brief = "\n".join(f"{i + 1}. [{x['pillar']} / {x['format']}] {x['title']} – Dreh: {x['twist']}"
                           for i, x in enumerate(batch))
+        search = any(x["pillar"] in search_pillars for x in batch)
+        research = f"""
+RECHERCHE (Websuche ist verfügbar, heute ist der {now(cfg).strftime('%d.%m.%Y')}):
+- Prüfe für jeden Post mit konkreten Tools, Funktionen, Modellen oder Preisen per web_search, ob das aktuell
+  so stimmt und so heißt. Bevorzuge offizielle Seiten und Doku der Anbieter, keine SEO-Listen.
+- Verwende nur bestätigte Details. Was du nicht bestätigen kannst: weglassen oder allgemeiner formulieren.
+- Beruht der Dreh einer Idee auf einer falschen Annahme, pass ihn an und vermerke das in review_notes.
+- Schreib die wichtigsten Quellen-URLs in review_notes (Format „Quelle: <url>“).
+""" if search else ""
         result = call_claude(cfg, system, f"""Schreib diese {len(batch)} Ideen als fertige Karussells aus, in dieser Reihenfolge:
 {brief}
 
 {rules}
-
+{research}
 Halte den Dreh jeder Idee durch – nicht beim Ausschreiben in Standard-Formulierungen zurückfallen.
 Jede Slide muss für sich einen Grund liefern, weiterzuwischen.
 
 {ctx}
 
-Gib die Posts über das Tool submit_posts zurück.""", posts_tool(cfg), temperature=0.8)
+Gib die Posts über das Tool submit_posts zurück.""", posts_tool(cfg), temperature=0.8, search=search)
         return result.get("posts", [])
 
     posts: list[dict] = []
@@ -419,7 +469,72 @@ Gib die Posts über das Tool submit_posts zurück.""", posts_tool(cfg), temperat
         print(f"✓ {len(posts)}/{len(chosen)} Posts ausgeschrieben", flush=True)
     if not posts:
         raise SystemExit("Keine verwertbaren Posts erhalten.")
+
+    # Stufe 3 – Kritik-Runde: jeder Post wird gegen alle Regeln geprüft und gezielt überarbeitet
+    if cfg.get("review", {}).get("enabled"):
+        posts = [review_post(cfg, system, rules, ctx, p) for p in posts]
     return posts, chosen
+
+
+REVIEW_CHECKLIST = """PRÜFLISTE – geh jeden Punkt durch:
+1. Hook: Erzeugt Slide 1 eine offene Frage, die erst die folgenden Slides beantworten? Würde ein Vielnutzer
+   von KI-Content beim Wischen hängen bleiben? Wenn nicht: schärfer, konkreter, überraschender.
+2. Einheitsbrei: Klingt irgendeine Slide wie ein Standard-KI-Karussell? Dann umschreiben, mit dem Dreh der Idee.
+3. Sprachstil: kurze Sätze, Verben statt Hauptwörter, keine Labels vor Headlines, keine internen Säulen- oder
+   Formatnamen, keine Füllwörter, Wortgrenzen (Headline ca. 7, Cover ca. 10, body ca. 25, box ca. 50 Wörter).
+4. Fakten: Keine erfundenen Zahlen, Erlebnisse oder Ergebnisse (Erlebnisse der Page nur laut Journal/Stats).
+   Tool-Details ohne Quelle in review_notes: entfernen oder allgemeiner formulieren.
+5. Nutzen: Ist der Post sofort nachmachbar? Ist ein Prompt oder Skill in der box vollständig und funktioniert
+   er so, wie er dasteht? Löst der Inhalt ein, was der Hook verspricht?
+6. Rote Linie: Jede Slide liefert einen Grund weiterzuwischen, keine Wiederholungen, keine Lückenfüller.
+7. Caption: bringt einen Zusatz-Gedanken, endet mit einer konkreten Frage, keine Hashtags.
+8. *Sternchen*: 1–2 Schlüsselwörter pro Slide, nie ganze Sätze."""
+
+
+def review_post(cfg: dict, system: str, rules: str, ctx: str, post: dict) -> dict:
+    """Zweiter Durchgang als strenger Redakteur. Bei Fehlern bleibt der Originalpost erhalten."""
+    try:
+        found = lint(post, cfg)
+    except (AttributeError, TypeError):
+        found = []
+    found_txt = ("\nDIE AUTOMATISCHE PRÜFUNG HAT GEFUNDEN – unbedingt beheben:\n"
+                 + "\n".join(f"- {n}" for n in found) + "\n") if found else ""
+    original = json.dumps(post, ensure_ascii=False, indent=2)
+    try:
+        result = call_claude(cfg, system, f"""Du bist jetzt der strengste Redakteur der Page. Unten steht ein fertiger
+Karussell-Post. Prüf ihn und gib die verbesserte Fassung zurück.
+
+{REVIEW_CHECKLIST}
+{found_txt}
+REGELN FÜR DIE ÜBERARBEITUNG:
+- Ändere nur, was den Post wirklich besser macht. Gute Stellen bleiben wörtlich stehen.
+- Behalte pillar, format, title und den Dreh. Kein neues Thema, nicht glattbügeln, nicht braver machen.
+- review_notes: übernimm die bestehenden Hinweise und Quellen und ergänze nur, was ein Mensch vor dem Posten
+  noch prüfen muss. Keine Liste deiner Änderungen.
+
+{rules}
+
+<post>
+{original}
+</post>
+
+{ctx}
+
+Gib genau einen Post über das Tool submit_posts zurück.""", posts_tool(cfg), temperature=0.5)
+        revised = result.get("posts", [])
+    except (TruncatedError, UnusableError) as e:
+        print(f"WARNUNG: Kritik-Runde für „{post['title']}“ fehlgeschlagen ({e}) – Original bleibt.", flush=True)
+        return post
+    if revised and valid_post(revised[0]):
+        new = revised[0]
+        old_notes, new_notes = post.get("review_notes", "").strip(), new.get("review_notes", "").strip()
+        lost = [u for u in re.findall(r"https?://\S+", old_notes) if u not in new_notes]
+        if lost:  # Quellen aus der Recherche dürfen nicht verloren gehen
+            new["review_notes"] = " · ".join(x for x in [new_notes, "Quellen: " + " ".join(lost)] if x)
+        print(f"✓ Kritik-Runde: {post['title']}", flush=True)
+        return new
+    print(f"WARNUNG: Kritik-Runde für „{post['title']}“ unbrauchbar – Original bleibt.", flush=True)
+    return post
 
 
 def write_pr_body(dirs: list[Path]) -> None:
