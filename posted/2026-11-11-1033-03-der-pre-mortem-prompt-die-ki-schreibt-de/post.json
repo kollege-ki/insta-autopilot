@@ -59,5 +59,12 @@
     "seconds": 42.1,
     "thumb_offset_ms": 1533,
     "music": null
+  },
+  "published": {
+    "media_id": "18602765572068580",
+    "permalink": "https://www.instagram.com/p/Dfp7kPrlHTx/",
+    "posted_at": "2026-11-12T21:36+01:00",
+    "slot": "manuell",
+    "reel_error": "Video-Upload fehlgeschlagen: 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
   }
 }
