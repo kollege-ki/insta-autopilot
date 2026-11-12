@@ -28,6 +28,7 @@ jobs:
       - name: Schriften
         run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-inter fonts-dejavu-core
       - run: pip install -r requirements.txt
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Posts erzeugen
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
