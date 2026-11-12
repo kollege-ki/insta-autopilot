@@ -58,5 +58,11 @@
     "slide-07.jpg",
     "slide-08.jpg",
     "slide-09.jpg"
-  ]
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 48.3,
+    "thumb_offset_ms": 1433,
+    "music": null
+  }
 }
