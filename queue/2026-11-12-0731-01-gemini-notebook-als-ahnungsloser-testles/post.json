@@ -1,0 +1,62 @@
+{
+  "pillar": "tool",
+  "format": "zweckfremd",
+  "title": "Gemini Notebook als ahnungsloser Testleser für dein Konzept",
+  "slides": [
+    {
+      "headline": "Der beste Testleser für dein Konzept hat *keine Ahnung*",
+      "body": "Und er redet gern darüber. Laut. Zu zweit."
+    },
+    {
+      "headline": "Mach aus deinem Konzept einen *Podcast*",
+      "body": "Gemini Notebook – früher NotebookLM – macht aus deinen Texten ein Gespräch zwischen zwei KI-Stimmen. Gedacht zum Lernen. Du nutzt es anders."
+    },
+    {
+      "headline": "Die zwei kennen nur deinen *Text*",
+      "body": "Kein Meeting, kein Flurfunk, kein Vorwissen. Wie dein Chef, deine Kundin, die Jury. Was nur in deinem Kopf steht, fehlt ihnen."
+    },
+    {
+      "headline": "Nimm *Deep Dive*, nicht Critique",
+      "body": "Critique bewertet. Du willst keine Bewertung. Du willst eine Nacherzählung – denn genau beim Nacherzählen verrutscht dein Konzept.",
+      "box": "Studio → Audio Overview → Anpassen\nFormat → Deep Dive\nSprache → Deutsch\nFokus → „Erklärt das zwei Leuten, die das Projekt nicht kennen. Nicht bewerten, nur nacherzählen: worum es geht, für wen, was als Nächstes passiert.“"
+    },
+    {
+      "headline": "Das *Lob* überhörst du",
+      "body": "Die Stimmen klingen begeistert. Das ist der Ton des Formats, kein Urteil über deinen Text. Wichtig ist, was sie erzählen – und was nicht."
+    },
+    {
+      "headline": "Schreib jede *Abweichung* mit",
+      "body": "Notier Minute und Stelle. Jeder Verdreher zeigt auf einen Absatz, der nicht trägt.",
+      "box": "Kernidee kommt spät → steht zu weit hinten\nFalsche Zielgruppe → nie klar genannt\nWichtiger Punkt fehlt → zu versteckt\nZwei Begriffe vermischt → du wechselst Wörter\nNebensache aufgeblasen → zu viel Platz"
+    },
+    {
+      "headline": "Nicht jeder Fehler ist *deiner*",
+      "body": "Die KI erfindet auch mal selbst. Darum die Gegenprobe: Steht der Punkt klar im Text? Dann Pech für die KI. Nein? Dann schreib um."
+    },
+    {
+      "headline": "Dann eine neue *Folge*",
+      "body": "Text überarbeiten, alte Quelle ersetzen, neu generieren. Erzählen die zwei dein Projekt jetzt so, wie du es meinst? Dann darf es zu Menschen."
+    }
+  ],
+  "caption": "Eine Zusammenfassung ist ein Kompressionstest. Was übrig bleibt, ist das, was dein Text betont – nicht das, was du betonen wolltest. Genau diese Differenz hörst du im Podcast.\n\nZweite Runde, wenn du Zeit hast: Probier das Format „The Brief“. Eine Stimme, unter zwei Minuten. Landet darin deine Kernidee? Dann hast du einen Elevator Pitch. Landet darin etwas anderes, weißt du, was dein Text in Wahrheit sagt.\n\nKurzer Hinweis: Lad nur hoch, was du mit Google teilen darfst. Kundendaten und Vertrauliches vorher raus.\n\nWelchen Text würdest du als Erstes durch die zwei Fremden schicken?",
+  "hashtags": [
+    "GeminiNotebook",
+    "NotebookLM",
+    "KonzeptSchreiben",
+    "KIimAlltag",
+    "Textfeedback"
+  ],
+  "review_notes": "WICHTIG: NotebookLM wurde am 16.07.2026 offiziell in „Gemini Notebook“ umbenannt – Post nennt daher den neuen Namen mit Hinweis „früher NotebookLM“. Quelle: https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/\nFormate (Deep Dive = Standard, zwei Hosts; The Brief = eine Stimme, unter zwei Minuten; The Critique = kritisches Feedback; The Debate) und Anpassen im Studio-Panel laut offizieller Hilfe bestätigt. Laut Hilfe sollen Audio Overviews eine „objektive Wiedergabe“ der Quellen sein – passt zum Dreh. Quelle: https://support.google.com/gemininotebook/answer/16212820?hl=en\nFokus-Prompt und 80+ Sprachen laut mehreren Drittquellen (z. B. https://guides.lib.uoguelph.ca/c.php?g=748893&p=5430928) – nicht in offizieller Doku selbst gelesen. Bitte prüfen: Heißen Buttons/Formate in der deutschen Oberfläche gleich („Anpassen“, „Deep Dive“, „Audio Overview“ evtl. „Audio-Zusammenfassung“)? Ggf. Box-Begriffe anpassen.\nAussage „Stimmen klingen begeistert“ ist eine allgemeine Beobachtung zum Stil, keine gemessene Zahl – ok so? Keine eigenen Erlebnisse der Page behauptet.\nKurz prüfen: Lässt sich eine Quelle im Notebook ersetzen bzw. löschen und die Audio-Übersicht danach neu erzeugen (Slide 8)? Falls nur „neue Quelle hinzufügen + alte löschen“ geht, passt die Formulierung trotzdem.",
+  "caption_final": "Eine Zusammenfassung ist ein Kompressionstest. Was übrig bleibt, ist das, was dein Text betont – nicht das, was du betonen wolltest. Genau diese Differenz hörst du im Podcast.\n\nZweite Runde, wenn du Zeit hast: Probier das Format „The Brief“. Eine Stimme, unter zwei Minuten. Landet darin deine Kernidee? Dann hast du einen Elevator Pitch. Landet darin etwas anderes, weißt du, was dein Text in Wahrheit sagt.\n\nKurzer Hinweis: Lad nur hoch, was du mit Google teilen darfst. Kundendaten und Vertrauliches vorher raus.\n\nWelchen Text würdest du als Erstes durch die zwei Fremden schicken?\n\nErstellt mit KI-Unterstützung.\n\n#GeminiNotebook #NotebookLM #KonzeptSchreiben #KIimAlltag #Textfeedback",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}
