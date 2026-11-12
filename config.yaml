@@ -128,6 +128,7 @@ reels:
   enabled: true
   share_to_feed: false        # false = nur im Reels-Bereich, das Profil-Raster bleibt reine Karussells
   music_dir: "assets/music"   # optional: lizenzfreie MP3s hier ablegen, sonst stille Tonspur
+  max_seconds: 35             # Instagram lehnt API-Reels über ca. 40 s derzeit ab
 
 posting:
   timezone: "Europe/Vienna"
