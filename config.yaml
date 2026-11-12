@@ -23,8 +23,23 @@ brand:
     workflow: light
     making_of: dark
 
-# Claude-Modell für die Texte (API-String laut docs.claude.com)
-model: "claude-sonnet-5-5"
+# Claude-Modell für die Texte (API-String laut platform.claude.com/docs/en/models/overview)
+# claude-opus-5-5 = empfohlen (4 $ / 20 $ pro Mio. Tokens Ein-/Ausgabe)
+# claude-fable-5-2 = noch stärker, doppelt so teuer · claude-sonnet-5-5 = günstiger, schwächer
+model: "claude-opus-5-5"
+effort: "high"                # Denktiefe: low, medium, high, xhigh, max (Opus-Standard wäre medium)
+max_tokens: 32000             # Obergrenze pro Antwort inkl. Denken
+
+# Websuche: Claude prüft Funktionen, Namen und Preise von Tools vor dem Schreiben
+# (10 $ pro 1.000 Suchen + Tokens). Quellen landen in den Prüfhinweisen im PR.
+web_search:
+  enabled: true
+  pillars: [tool, workflow, skill]   # nur für diese Säulen wird gesucht
+  max_uses: 6                        # max. Suchen pro Aufruf (= pro Paket aus 2 Posts)
+
+# Kritik-Runde: ein zweiter Durchgang prüft jeden Post gegen alle Regeln und überarbeitet ihn
+review:
+  enabled: true
 
 content:
   posts_per_batch: 7          # so viele Posts erzeugt ein Lauf (1 Woche bei 1 Post/Tag)
