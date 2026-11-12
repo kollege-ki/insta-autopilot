@@ -34,5 +34,11 @@
     "source": "journal",
     "title": "Automatische Reels – aus jedem Karussell entsteht ein Video, in dem die KI die Headline tippt (nur im Reels-Bereich, das Profil-Raster bleibt Karussells).",
     "details": ""
+  },
+  {
+    "date": "2026-11-12",
+    "source": "auto",
+    "title": "Einstellung geändert",
+    "details": "Modell: claude-sonnet-5-5 → claude-opus-5-5"
   }
 ]
