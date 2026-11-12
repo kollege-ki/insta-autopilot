@@ -13,6 +13,10 @@ on:
         description: "Nur testen, nichts posten"
         type: boolean
         default: false
+      reel_nachholen:
+        description: "Nur Reel zum letzten Post nachholen (kein neues Karussell)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -32,6 +36,9 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: ffmpeg installieren (nur beim Reel-Nachholen)
+        if: ${{ inputs.reel_nachholen }}
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Nächsten Post veröffentlichen (falls Slot erreicht)
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
@@ -40,6 +47,7 @@ jobs:
           ARGS=""
           if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ "${{ inputs.reel_nachholen }}" = "true" ]; then ARGS="$ARGS --reel-nachholen"; fi
           python -m autopilot.publish $ARGS
       - name: Cockpit aktualisieren (nur wenn gepostet wurde)
         env:
