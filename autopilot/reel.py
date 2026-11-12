@@ -1,4 +1,7 @@
-"""Macht aus einem Karussell ein Reel (1080x1920, H.264, ca. 20–35 Sekunden).
+"""Macht aus einem Karussell ein Reel (1080x1920, H.264, höchstens reels.max_seconds, Standard 35 s).
+
+Instagram lehnt per API hochgeladene Reels über ca. 40 Sekunden derzeit mit
+„ProcessingFailedError“ ab – darum werden lange Posts schneller durchgeblättert.
 
 Ablauf im Video:
   1. Cover: die Headline wird Zeichen für Zeichen getippt, danach blinkt der Cursor
@@ -74,10 +77,16 @@ def build_frames(post: dict, cfg: dict, render: bool = True):
     off = compose(rc(cover, theme, title, label, total, cursor_on=False), theme.outer)
     for i in range(4):
         yield (on if i % 2 == 0 else off), blink
-    # 3) Inhalts-Slides
-    for i, s in enumerate(slides[1:], start=2):
-        secs = min(6.0, max(2.5, 1.2 + words(s) / 4.0))
-        yield compose(rn(s, theme, title, i, total), theme.outer), int(secs * FPS)
+    # 3) Inhalts-Slides – Lesezeit nach Textmenge, bei Bedarf gestaucht auf max_seconds
+    secs = [min(6.0, max(2.5, 1.2 + words(s) / 4.0)) for s in slides[1:]]
+    n_typing = len(range(0, n_chars + step, step))
+    fixed = n_typing / FPS + (4 + 6) * blink / FPS
+    budget = float(cfg.get("reels", {}).get("max_seconds", 35)) - fixed
+    if secs and sum(secs) > budget:
+        factor = max(budget, 0) / sum(secs)
+        secs = [max(1.8, x * factor) for x in secs]
+    for (i, s), sec in zip(enumerate(slides[1:], start=2), secs):
+        yield compose(rn(s, theme, title, i, total), theme.outer), int(sec * FPS)
     # 4) Abschluss, Cursor blinkt
     cta = cfg["content"]["cta_slide"]
     on = compose(rt(cta, theme, title, handle, total), theme.outer)
@@ -112,7 +121,7 @@ def build_reel(post_dir: Path, post: dict, cfg: dict) -> dict | None:
            "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{VW}x{VH}", "-r", str(FPS), "-i", "-",
            *audio, "-map", "0:v", "-map", "1:a", "-t", f"{duration:.2f}", *afilter,
            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
-           "-profile:v", "high", "-r", str(FPS),
+           "-profile:v", "high", "-level", "4.1", "-g", str(2 * FPS), "-r", str(FPS),
            "-c:a", "aac", "-b:a", "128k", "-ar", "48000",
            "-movflags", "+faststart", str(out)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)

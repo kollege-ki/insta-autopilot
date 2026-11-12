@@ -54,9 +54,13 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="Sofort posten, Slot-Logik ignorieren")
     ap.add_argument("--dry-run", action="store_true", help="Nur anzeigen, nichts posten")
+    ap.add_argument("--reel-nachholen", action="store_true",
+                    help="Reel zum letzten Post ohne Reel neu bauen und veröffentlichen (kein neues Karussell)")
     args = ap.parse_args()
 
     cfg = load_config()
+    if args.reel_nachholen:
+        return reel_nachholen(cfg, dry_run=args.dry_run)
     tz_now = now(cfg)
     today = tz_now.date()
     history = load_json(HISTORY_FILE, [])
@@ -129,7 +133,9 @@ def main() -> None:
         try:
             reel_id = ig.publish_reel(moved / reel_file.name, post["caption_final"],
                                       share_to_feed=bool(reel_cfg.get("share_to_feed", False)),
-                                      thumb_offset_ms=post.get("reel", {}).get("thumb_offset_ms"))
+                                      thumb_offset_ms=post.get("reel", {}).get("thumb_offset_ms"),
+                                      # Fallback: die Datei liegt noch unter queue/ im Repo (öffentlich)
+                                      video_url=f"{base}/queue/{item.name}/{reel_file.name}")
             reel_link = ig.permalink(reel_id)
             print(f"✓ Reel veröffentlicht: {reel_id} {reel_link}")
             entry.update(reel_media_id=reel_id, reel_permalink=reel_link)
@@ -139,6 +145,39 @@ def main() -> None:
             post["published"]["reel_error"] = str(e)[:300]
         (moved / "post.json").write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         save_json(HISTORY_FILE, history)
+
+
+def reel_nachholen(cfg: dict, dry_run: bool = False) -> None:
+    """Baut das Reel zum jüngsten veröffentlichten Post ohne Reel neu und postet nur das Reel."""
+    from .reel import build_reel
+
+    history = load_json(HISTORY_FILE, [])
+    entry = next((h for h in reversed(history) if not h.get("reel_media_id")), None)
+    if not entry:
+        print("Alle Posts haben schon ein Reel.")
+        return
+    folder = POSTED / entry["folder"]
+    post = json.loads((folder / "post.json").read_text(encoding="utf-8"))
+    info = build_reel(folder, post, cfg)
+    if not info:
+        raise SystemExit("Reel konnte nicht gebaut werden (ffmpeg?).")
+    post["reel"] = info
+    print(f"→ Reel für {folder.name} ({info.get('seconds', '?')} s)")
+    if dry_run:
+        return
+    from .instagram import Instagram
+    ig = Instagram(cfg)
+    reel_cfg = cfg.get("reels", {})
+    reel_id = ig.publish_reel(folder / info.get("file", "reel.mp4"), post["caption_final"],
+                              share_to_feed=bool(reel_cfg.get("share_to_feed", False)),
+                              thumb_offset_ms=info.get("thumb_offset_ms"))
+    reel_link = ig.permalink(reel_id)
+    print(f"✓ Reel veröffentlicht: {reel_id} {reel_link}")
+    entry.update(reel_media_id=reel_id, reel_permalink=reel_link)
+    post.setdefault("published", {}).update(reel_media_id=reel_id, reel_permalink=reel_link)
+    post["published"].pop("reel_error", None)
+    (folder / "post.json").write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    save_json(HISTORY_FILE, history)
 
 
 if __name__ == "__main__":

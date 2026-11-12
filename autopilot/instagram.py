@@ -126,26 +126,36 @@ class Instagram:
         return published["id"]
 
     def publish_reel(self, video_path, caption: str, share_to_feed: bool = False,
-                     thumb_offset_ms: int | None = None) -> str:
+                     thumb_offset_ms: int | None = None, video_url: str | None = None) -> str:
         """Reel per „resumable upload“: Container anlegen, Video direkt zu Meta hochladen,
-        auf die Verarbeitung warten, veröffentlichen. Das Video braucht keine öffentliche URL."""
+        auf die Verarbeitung warten, veröffentlichen. Lehnt Meta den Upload ab
+        (ProcessingFailedError) und ist video_url gesetzt, holt sich Instagram das Video
+        in einem neuen Container selbst von dieser öffentlichen URL."""
         from pathlib import Path
 
         video = Path(video_path)
-        params = {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
-                  "share_to_feed": "true" if share_to_feed else "false"}
+        base_params = {"media_type": "REELS", "caption": caption,
+                       "share_to_feed": "true" if share_to_feed else "false"}
         if thumb_offset_ms is not None:
-            params["thumb_offset"] = str(thumb_offset_ms)
-        container = self.post(f"{self.user_id}/media", **params)
-        cid = container["id"]
-        version = self.base.rsplit("/", 1)[-1]
-        uri = container.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{version}/{cid}"
-        data = video.read_bytes()
-        r = requests.post(uri, data=data, timeout=600, headers={
-            "Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(len(data))})
-        if r.status_code >= 400:
-            raise InstagramError(f"Video-Upload fehlgeschlagen: {r.status_code} {r.text[:300]}")
-        self.wait_ready(cid, timeout=900)
+            base_params["thumb_offset"] = str(thumb_offset_ms)
+        try:
+            container = self.post(f"{self.user_id}/media", upload_type="resumable", **base_params)
+            cid = container["id"]
+            version = self.base.rsplit("/", 1)[-1]
+            uri = container.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{version}/{cid}"
+            data = video.read_bytes()
+            r = requests.post(uri, data=data, timeout=600, headers={
+                "Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(len(data))})
+            if r.status_code >= 400:
+                raise InstagramError(f"Video-Upload fehlgeschlagen: {r.status_code} {r.text[:300]}")
+            self.wait_ready(cid, timeout=900)
+        except InstagramError as e:
+            if not video_url:
+                raise
+            print(f"Direkt-Upload abgelehnt ({str(e)[:120]}) – neuer Versuch über {video_url}", flush=True)
+            container = self.post(f"{self.user_id}/media", video_url=video_url, **base_params)
+            cid = container["id"]
+            self.wait_ready(cid, timeout=900)
         published = self.post(f"{self.user_id}/media_publish", creation_id=cid)
         return published["id"]
 
