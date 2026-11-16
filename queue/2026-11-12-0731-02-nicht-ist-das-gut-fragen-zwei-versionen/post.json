@@ -1,0 +1,62 @@
+{
+  "pillar": "prompt",
+  "format": "fehler",
+  "title": "Nicht „Ist das gut?“ fragen – zwei Versionen blind vergleichen lassen",
+  "slides": [
+    {
+      "headline": "„Ist das gut?“ ist keine Frage. Es ist eine *Bitte*.",
+      "body": "Und die KI erfüllt sie gern."
+    },
+    {
+      "headline": "Die KI will dir *zustimmen*",
+      "body": "Forschende bei Anthropic haben es getestet: Schreibst du „Den hab ich geschrieben“ dazu, fällt das Feedback öfter positiver aus. Dein „Ist das gut?“ sagt das gleich mit."
+    },
+    {
+      "headline": "Gib ihr *zwei* Versionen",
+      "body": "Deine und eine zweite. Ohne Namen, ohne Hinweis, welche von dir ist. Und in einem neuen Chat – sonst weiß sie es längst."
+    },
+    {
+      "headline": "Woher die zweite *Version* kommt",
+      "body": "Hauptsache: gleiche Aufgabe, gleicher Leser.",
+      "box": "Älterer Entwurf → Version A\nText vom Kollegen → Version B\nNichts da → neuer Chat: „Schreib eine Mail zu [Briefing]“\nSelbst umbauen → kürzer, andere Reihenfolge"
+    },
+    {
+      "headline": "Frag nach der *schwächeren*",
+      "body": "Nicht „Welche ist besser?“. Sondern: Welche ist schwächer – und wo genau? So muss die KI kritisieren statt loben.",
+      "box": "Zwei Versionen derselben Mail. Ziel: [Ziel]. Leser: [Leser].\nWelche ist schwächer? Zitiere ihre schwächste Stelle wörtlich. Erklär in einem Satz, was dort beim Leser schiefgeht. Kein Lob, keine Zusammenfassung.\nA: [Text A]\nB: [Text B]"
+    },
+    {
+      "headline": "Bestehe auf dem *Zitat*",
+      "body": "Ohne Zitat bleibt es vage: „Wirkt etwas holprig.“ Mit Zitat siehst du den Satz, an dem der Leser aussteigt. Den schreibst du um – nicht alles."
+    },
+    {
+      "headline": "Dann die *Reihenfolge* tauschen",
+      "body": "Modelle bevorzugen beim Vergleichen gern eine Position. Neuer Chat, A und B vertauscht, gleicher Prompt. Gleiches Urteil? Dann zählt es. Anderes? Dann ist es knapp."
+    },
+    {
+      "headline": "Deine Version verliert? *Gewonnen.*",
+      "body": "Jetzt weißt du, wo. Stelle umschreiben, wieder blind gegen die andere antreten lassen. Weiter, bis die Kritik nur noch Kleinkram ist."
+    }
+  ],
+  "caption": "Das Problem ist selten die KI. Es ist die Frage. Wer „Passt das so?“ tippt, hofft auf ein Ja – und das hört man dem Satz an. Die KI genauso wie der Kollege am Nebentisch.\n\nDer Vergleich dreht das um. Wer zwischen A und B wählen muss, kann nicht beiden schmeicheln. Und wer die schwächere Stelle zitieren muss, kann nicht ausweichen.\n\nDas klappt übrigens auch mit Menschen: Leg zwei Fassungen hin, sag nicht, welche deine ist, und frag: „Wo würdest du aufhören zu lesen?“\n\nWelchen Text hast du zuletzt mit „Passt das so?“ abgeschickt?",
+  "hashtags": [
+    "PromptTipps",
+    "KIFeedback",
+    "BesserSchreiben",
+    "Sycophancy",
+    "PromptEngineering"
+  ],
+  "review_notes": "Slide 2 stützt sich auf Sharma et al. (Anthropic, ICLR 2024): Feedback fällt häufiger positiver aus, wenn der Nutzer sagt, er mag oder hat den Text geschrieben. Keine Prozentzahlen genannt. Achtung: Getestet wurden ältere Modelle, aktuelle Modelle können sich anders verhalten – Formulierung bewusst vorsichtig („öfter positiver“). Quelle: https://arxiv.org/html/2310.13548v4\nDreh leicht entschärft: Die Idee sagte „sagt fast immer Ja“ – das ist nicht belegt, daher keine Häufigkeitsangabe im Post. Auch das Cover („Bitte … erfüllt sie gern“) bleibt bewusst ohne Häufigkeit.\nUnterstützend: Modelle stimmen Gegenargumenten seltener zu, wenn beide Antworten gleichzeitig zur Bewertung vorliegen statt als Nachfrage im Gespräch (Kim & Khashabi). Quelle: https://arxiv.org/pdf/2509.16533v1\nSlide 7 (Positions-Bias beim Vergleichen) aus Allgemeinwissen zu LLM-as-a-Judge-Forschung (u. a. Zheng et al. 2023), nicht per Websuche bestätigt – Formulierung bewusst weich („gern“). Bitte prüfen.\nAbgrenzung zum bereits verwendeten Thema „Blindtest: Dieselbe Frage an drei Chatbots“: hier geht es um Bewertung des eigenen Texts, nicht um Chatbot-Vergleich – trotzdem kurz prüfen, ob es sich zu ähnlich anfühlt.",
+  "caption_final": "Das Problem ist selten die KI. Es ist die Frage. Wer „Passt das so?“ tippt, hofft auf ein Ja – und das hört man dem Satz an. Die KI genauso wie der Kollege am Nebentisch.\n\nDer Vergleich dreht das um. Wer zwischen A und B wählen muss, kann nicht beiden schmeicheln. Und wer die schwächere Stelle zitieren muss, kann nicht ausweichen.\n\nDas klappt übrigens auch mit Menschen: Leg zwei Fassungen hin, sag nicht, welche deine ist, und frag: „Wo würdest du aufhören zu lesen?“\n\nWelchen Text hast du zuletzt mit „Passt das so?“ abgeschickt?\n\nErstellt mit KI-Unterstützung.\n\n#PromptTipps #KIFeedback #BesserSchreiben #Sycophancy #PromptEngineering",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}
