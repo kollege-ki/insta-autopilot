@@ -1,8 +1,8 @@
-# Learnings (Stand 16.11.2026, 5 ausgewertete Posts)
+# Learnings (Stand 17.11.2026, 6 ausgewertete Posts)
 
 ## Uhrzeiten (Ø Reichweite, Anzahl)
 - manuell: 0 (2)
-- 07:30: 0 (1)
+- 07:30: 0 (2)
 - 12:15: 0 (1)
 - 18:30: 0 (1)
 - Noch zu wenig Daten für einen Vergleich (mind. 5 Posts pro Uhrzeit).
@@ -11,6 +11,7 @@
 - workflow: 0 (2)
 - skill: 0 (2)
 - prompt: 0 (1)
+- making_of: 0 (1)
 
 ## Formate (Ø Score, Anzahl)
 - fehler: 0 (1)
@@ -18,6 +19,7 @@
 - rolle: 0 (1)
 - these: 0 (1)
 - zweckfremd: 0 (1)
+- experiment: 0 (1)
 
 ## Top-Posts – Richtung beibehalten, aber nicht kopieren
 - „Endloser Chat statt Übergabedokument“ (workflow, fehler): 0 Shares, 0 Saves, Reichweite 0
@@ -27,5 +29,5 @@
 - „Vokabeltrainer aus deinen eigenen Fehlern“ (skill, zweckfremd): 0 Shares, 0 Saves, Reichweite 0
 
 ## Reels vs. Karussells (Ø Reichweite, Anzahl)
-- Karussells: 0 (5)
-- Reels: 0 (3)
+- Karussells: 0 (6)
+- Reels: 0 (4)
