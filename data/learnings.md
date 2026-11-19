@@ -1,10 +1,10 @@
-# Learnings (Stand 18.11.2026, 7 ausgewertete Posts)
+# Learnings (Stand 19.11.2026, 8 ausgewertete Posts)
 
 ## Uhrzeiten (Ø Reichweite, Anzahl)
 - manuell: 0 (2)
 - 07:30: 0 (2)
 - 12:15: 0 (2)
-- 18:30: 0 (1)
+- 18:30: 0 (2)
 - Noch zu wenig Daten für einen Vergleich (mind. 5 Posts pro Uhrzeit).
 
 ## Content-Säulen (Ø Score, Anzahl)
@@ -12,14 +12,14 @@
 - skill: 0 (2)
 - prompt: 0 (1)
 - making_of: 0 (1)
-- tool: 0 (1)
+- tool: 0 (2)
 
 ## Formate (Ø Score, Anzahl)
 - fehler: 0 (1)
 - rueckwaerts: 0 (1)
 - rolle: 0 (1)
 - these: 0 (1)
-- zweckfremd: 0 (1)
+- zweckfremd: 0 (2)
 - experiment: 0 (2)
 
 ## Top-Posts – Richtung beibehalten, aber nicht kopieren
@@ -29,6 +29,11 @@
 - „Jeder gute KI-Workflow endet bei einem Menschen“ (workflow, these): 0 Shares, 0 Saves, Reichweite 0
 - „Vokabeltrainer aus deinen eigenen Fehlern“ (skill, zweckfremd): 0 Shares, 0 Saves, Reichweite 0
 
+## Flops – diese Richtung meiden
+- „Das Uhrzeit-Test: 07:30, 12:15 oder 18:30“ (making_of, experiment)
+- „Blindtest: Dieselbe Frage an drei Chatbots, ohne Namen“ (tool, experiment)
+- „Gemini Notebook als ahnungsloser Testleser für dein Konzept“ (tool, zweckfremd)
+
 ## Reels vs. Karussells (Ø Reichweite, Anzahl)
-- Karussells: 0 (7)
+- Karussells: 0 (8)
 - Reels: 0 (5)
