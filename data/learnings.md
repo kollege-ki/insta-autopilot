@@ -1,8 +1,8 @@
-# Learnings (Stand 19.11.2026, 8 ausgewertete Posts)
+# Learnings (Stand 20.11.2026, 9 ausgewertete Posts)
 
 ## Uhrzeiten (Ø Reichweite, Anzahl)
 - manuell: 0 (2)
-- 07:30: 0 (2)
+- 07:30: 0 (3)
 - 12:15: 0 (2)
 - 18:30: 0 (2)
 - Noch zu wenig Daten für einen Vergleich (mind. 5 Posts pro Uhrzeit).
@@ -10,12 +10,12 @@
 ## Content-Säulen (Ø Score, Anzahl)
 - workflow: 0 (2)
 - skill: 0 (2)
-- prompt: 0 (1)
+- prompt: 0 (2)
 - making_of: 0 (1)
 - tool: 0 (2)
 
 ## Formate (Ø Score, Anzahl)
-- fehler: 0 (1)
+- fehler: 0 (2)
 - rueckwaerts: 0 (1)
 - rolle: 0 (1)
 - these: 0 (1)
@@ -30,10 +30,10 @@
 - „Vokabeltrainer aus deinen eigenen Fehlern“ (skill, zweckfremd): 0 Shares, 0 Saves, Reichweite 0
 
 ## Flops – diese Richtung meiden
-- „Das Uhrzeit-Test: 07:30, 12:15 oder 18:30“ (making_of, experiment)
 - „Blindtest: Dieselbe Frage an drei Chatbots, ohne Namen“ (tool, experiment)
 - „Gemini Notebook als ahnungsloser Testleser für dein Konzept“ (tool, zweckfremd)
+- „Nicht „Ist das gut?“ fragen – zwei Versionen blind vergleichen lassen“ (prompt, fehler)
 
 ## Reels vs. Karussells (Ø Reichweite, Anzahl)
-- Karussells: 0 (8)
+- Karussells: 0 (9)
 - Reels: 0 (5)
