@@ -1,4 +1,4 @@
-# Wirkung der Meilensteine (Stand 20.11.2026)
+# Wirkung der Meilensteine (Stand 21.11.2026)
 
 Vergleich jeweils 14 Tage vorher vs. 14 Tage nachher. Zeigt Zusammenhänge, keinen Beweis – es ändern sich immer mehrere Dinge gleichzeitig.
 
