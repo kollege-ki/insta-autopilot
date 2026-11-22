@@ -1,0 +1,70 @@
+{
+  "pillar": "workflow",
+  "format": "rolle",
+  "title": "Die KI als Protokollführerin, die Zombie-Beschlüsse findet",
+  "slides": [
+    {
+      "headline": "Welcher Beschluss steht schon zum vierten Mal im *Protokoll*?",
+      "body": "Im Raum merkt es niemand. Die KI schon – wenn du sie lässt."
+    },
+    {
+      "headline": "Beschlüsse, die nie *sterben*",
+      "body": "Jedes Meeting beschließt sie neu. Keiner erledigt sie. Weil jedes Protokoll nur das aktuelle Meeting kennt – und niemand die alten danebenlegt."
+    },
+    {
+      "headline": "Gib der KI ein *Gedächtnis*",
+      "body": "Das neue Protokoll plus die letzten drei. Mit Datum, untereinander eingefügt. Mehr Material braucht sie nicht."
+    },
+    {
+      "headline": "Die Protokollführerin, die *zurückblättert*",
+      "body": "Diese Rolle liest nicht ein Meeting, sondern vier. Und sucht nur eines: Was taucht immer wieder auf und wird nie fertig?",
+      "box": "Du bist Protokollführerin mit Gedächtnis. Unten stehen vier Protokolle mit Datum. Finde Beschlüsse, die in mindestens zwei davon vorkommen und nie als erledigt vermerkt sind. Pro Fund: Wortlaut, erstes Datum, Anzahl, Zuständige je Protokoll. Belege jeden Fund mit Zitat. Ohne Zitat kein Fund.\n[Protokolle einfügen]"
+    },
+    {
+      "headline": "So sieht ein *Zombie* aus",
+      "body": "So kann das Ergebnis aussehen. Achte auf wechselnde Namen – da hat niemand den Beschluss wirklich übernommen.",
+      "box": "„Website-Texte überarbeiten“ → 3×, Zuständige wechselt\n„Lieferant anfragen“ → 2×, nie ein Termin\n„Onboarding-Doku“ → 4×, kein Name"
+    },
+    {
+      "headline": "Zombies tragen gern neue *Kleidung*",
+      "body": "Aus „Newsletter starten“ wird „Newsletter-Konzept fertig machen“. Derselbe Zombie. Häng diese Zeile an den Prompt, damit die KI ihn erkennt.",
+      "box": "Zähle Umformulierungen als denselben Beschluss. Markiere solche Treffer mit (ähnlich) und zitiere beide Stellen."
+    },
+    {
+      "headline": "Weiterführen oder *begraben*?",
+      "body": "Für jeden Zombie gibt es nur zwei ehrliche Wege. Lass die KI daraus einen Punkt für die nächste Tagesordnung machen.",
+      "box": "Mach aus jedem Fund einen Tagesordnungspunkt mit zwei Optionen:\nWeiterführen → Name + fixer Termin\nBegraben → offiziell streichen, ein Satz Begründung"
+    },
+    {
+      "headline": "Gegenlesen, bevor du *anklagst*",
+      "body": "Erledigt heißt oft: Es stand nur nie im Protokoll. Die KI sieht das nicht. Prüf jeden Fund kurz, bevor du ihn im Team ansprichst."
+    }
+  ],
+  "caption": "Zombie-Beschlüsse sind selten ein Faulheitsproblem. Meistens hat der Beschluss keinen Besitzer – oder er war von Anfang an zu groß formuliert. „Website überarbeiten“ erledigt niemand. „Startseite-Text bis Freitag, Lena“ schon.\n\nDarum lohnt sich der Blick auf das Muster: Wechselt die zuständige Person ständig? Fehlt immer der Termin? Die KI liefert dir die Liste. Die Diagnose machst du.\n\nNoch ein Punkt: Protokolle enthalten Namen und interne Infos. Nimm dafür ein KI-Tool, das in deinem Unternehmen freigegeben ist.\n\nWelcher Beschluss geistert bei euch schon am längsten durch die Protokolle?",
+  "hashtags": [
+    "meetingprotokoll",
+    "besprechungen",
+    "promptvorlage",
+    "kiimbuero",
+    "teamorganisation"
+  ],
+  "review_notes": "Keine Tool-spezifischen Details, keine Zahlen – nichts per Websuche zu bestätigen. Die Zombie-Liste auf Slide 5 ist ein erfundenes Illustrationsbeispiel (keine echten Ergebnisse) – sollte als Muster erkennbar sein, ggf. im Design zusätzlich als Beispiel kennzeichnen. Hinweis zu freigegebenen Tools in der Caption ist bewusst allgemein gehalten (kein Rechtstipp). Vor dem Posten prüfen: Platzhalter „[Protokolle einfügen]“ in der Box auf Slide 4 wird im Design korrekt dargestellt.",
+  "caption_final": "Zombie-Beschlüsse sind selten ein Faulheitsproblem. Meistens hat der Beschluss keinen Besitzer – oder er war von Anfang an zu groß formuliert. „Website überarbeiten“ erledigt niemand. „Startseite-Text bis Freitag, Lena“ schon.\n\nDarum lohnt sich der Blick auf das Muster: Wechselt die zuständige Person ständig? Fehlt immer der Termin? Die KI liefert dir die Liste. Die Diagnose machst du.\n\nNoch ein Punkt: Protokolle enthalten Namen und interne Infos. Nimm dafür ein KI-Tool, das in deinem Unternehmen freigegeben ist.\n\nWelcher Beschluss geistert bei euch schon am längsten durch die Protokolle?\n\nErstellt mit KI-Unterstützung.\n\n#meetingprotokoll #besprechungen #promptvorlage #kiimbuero #teamorganisation",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 34.8,
+    "thumb_offset_ms": 1000,
+    "music": null
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "pillar": "prompt",
+  "format": "rueckwaerts",
+  "title": "Erst die Antwort, dann die Mail",
+  "slides": [
+    {
+      "headline": "Deine Mail fängt bei der *Antwort* an – nicht bei „Hallo“",
+      "body": "Ein Satz reicht – und die KI weiß, was in deiner Mail fehlt."
+    },
+    {
+      "headline": "Du weißt längst, was du *lesen* willst",
+      "body": "„Passt, machen wir bis Freitag.“ Genau diesen Satz willst du zurück. Also gib ihn der KI – *vor* der Mail, nicht danach."
+    },
+    {
+      "headline": "Die KI *rechnet* zurück",
+      "body": "Was muss in der Mail stehen, damit jemand genau so antwortet? Das grübelst nicht du aus. Die KI leitet es aus dem *Zielsatz* ab."
+    },
+    {
+      "headline": "Jedes Wort der Antwort *verlangt* etwas",
+      "body": "Die KI liest den Zielsatz wie eine *Checkliste* – und baut die Mail drumherum.",
+      "box": "„bis Freitag“ → Frist in die Mail\n„machen wir“ → Aufgabe ohne Rückfragen\n„passt“ → nur eine Entscheidung offen"
+    },
+    {
+      "headline": "Andere Antwort, *andere* Mail",
+      "body": "Tausch den Zielsatz aus – und die ganze Mail ändert sich mit.",
+      "box": "„Ja, ich bin dabei.“ → Einladung mit klarem Ja/Nein\n„Hier sind die Unterlagen.“ → Bitte mit genauer Liste\n„Kein Problem, verschieben wir.“ → Absage mit *Ersatztermin*"
+    },
+    {
+      "headline": "Kopier dir den *Prompt*",
+      "box": "Diese Antwort will ich auf meine Mail: „[dein Zielsatz]“\nEmpfänger: [Rolle, wie gut wir uns kennen]\nWorum es geht: [Stichworte]\n1. Leite ab, was die Mail dafür enthalten muss.\n2. Schreib die Mail – kurz, ohne Floskeln.\n3. Nenn 3 Gründe, warum der Empfänger trotzdem zögern könnte."
+    },
+    {
+      "headline": "Lass sie die *Einwände* mitliefern",
+      "body": "Die Liste am Ende zeigt, wo der Empfänger hängen könnte. Jeden Punkt räumst du in der Mail aus – bevor er zur *Rückfrage* wird."
+    },
+    {
+      "headline": "Klappt auch ohne *Mail*",
+      "body": "Slack-Nachricht, Angebot, Bitte an die Hausverwaltung: Wo du eine bestimmte Reaktion willst, startest du beim *Zielsatz*."
+    }
+  ],
+  "caption": "Die meisten schreiben Mails von vorne: Anrede, Kontext, irgendwann die Bitte. Die Antwort ist dann Glückssache.\n\nWenn dir kein Antwortsatz einfällt, ist das schon ein Ergebnis: Du weißt noch nicht genau, was du willst. Dann hilft keine bessere Formulierung – dann klärst du erst das Ziel.\n\nUnd bleib realistisch. „Gern, kostet nichts, mach ich sofort“ als Zielsatz führt zu einer Mail, die drängt statt überzeugt. Wähl die Antwort, die ein vernünftiger Mensch auch wirklich geben würde.\n\nWelche Antwort hättest du diese Woche gern auf eine Mail bekommen – und welche kam wirklich?",
+  "hashtags": [
+    "promptideen",
+    "kiimbuero",
+    "mailsschreiben",
+    "promptengineering",
+    "kollegeki"
+  ],
+  "review_notes": "Keine Tool-, Preis- oder Feature-Angaben, keine Erlebnisse der Page. Abgrenzung zum bereits gelaufenen Post 'Skill aus drei guten Mails rückwärts ableiten': Hier geht es um eine einzelne Mail, die vom gewünschten Antwortsatz aus geschrieben wird, nicht um einen Skill aus Beispielmails – trotzdem kurz prüfen, ob es sich zu ähnlich anfühlt.",
+  "caption_final": "Die meisten schreiben Mails von vorne: Anrede, Kontext, irgendwann die Bitte. Die Antwort ist dann Glückssache.\n\nWenn dir kein Antwortsatz einfällt, ist das schon ein Ergebnis: Du weißt noch nicht genau, was du willst. Dann hilft keine bessere Formulierung – dann klärst du erst das Ziel.\n\nUnd bleib realistisch. „Gern, kostet nichts, mach ich sofort“ als Zielsatz führt zu einer Mail, die drängt statt überzeugt. Wähl die Antwort, die ein vernünftiger Mensch auch wirklich geben würde.\n\nWelche Antwort hättest du diese Woche gern auf eine Mail bekommen – und welche kam wirklich?\n\nErstellt mit KI-Unterstützung.\n\n#promptideen #kiimbuero #mailsschreiben #promptengineering #kollegeki",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 35.0,
+    "thumb_offset_ms": 1633,
+    "music": null
+  }
+}
