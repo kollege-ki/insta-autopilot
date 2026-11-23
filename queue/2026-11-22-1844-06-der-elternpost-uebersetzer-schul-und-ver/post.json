@@ -1,0 +1,64 @@
+{
+  "pillar": "skill",
+  "format": "rezept",
+  "title": "Der Elternpost-Übersetzer: Schul- und Vereinsmails in 3 Zeilen",
+  "slides": [
+    {
+      "headline": "Der Elternbrief hat eine Seite. Du brauchst *drei Zeilen*.",
+      "body": "Welche drei – das legst du genau einmal fest."
+    },
+    {
+      "headline": "Termin. Mitbringen. *Frist.*",
+      "body": "Wann musst du wo sein? Was muss ins Sackerl? Was muss bis wann unterschrieben, bezahlt oder abgegeben sein? Alles andere ist Begleittext."
+    },
+    {
+      "headline": "Gems sind seit 17. November *eingefroren*",
+      "body": "Google ersetzt Gems bei privaten Konten durch Skills. Neue Custom GPTs gibt's für private ChatGPT-Konten nicht mehr. Der Text bleibt gleich, nur der *Ort* wandert:",
+      "box": "Gemini → Skills → manuell erstellen\nChatGPT → neues Projekt → Anweisungen in den Projekteinstellungen"
+    },
+    {
+      "headline": "Diesen Text *einmal* einfügen",
+      "body": "In die Anweisungen deines Skills oder Projekts. Danach reicht: Mitteilung reinkopieren oder Foto vom Zettel hochladen.",
+      "box": "Du bekommst Mitteilungen von Schule, Kindergarten, Verein. Antworte immer nur so:\nTERMIN: Datum, Uhrzeit, Ort\nMITBRINGEN: Dinge, Geld, Kleidung\nFRIST: was bis wann erledigen\nFehlt etwas → „keine Angabe“. Nichts ergänzen, nichts erfinden. Kein weiterer Text."
+    },
+    {
+      "headline": "„Keine Angabe“ ist die *wichtigste* Zeile",
+      "body": "Ohne diese Regel stopft die KI Lücken – etwa mit einer Uhrzeit, die plausibel klingt. „Keine Angabe“ heißt: Hier fragst du nach."
+    },
+    {
+      "headline": "Für die *Sonderfälle* nachschärfen",
+      "body": "Elternpost ist selten ordentlich. Häng diese Zeilen an die Anweisung an:",
+      "box": "Mehrere Termine → je eine eigene Zeile\n„nächsten Montag“ → wörtlich übernehmen, nicht umrechnen\nBetrifft nur andere Gruppen → „betrifft uns nicht“\nUnsere Gruppe: [Klasse/Team eintragen]"
+    },
+    {
+      "headline": "Drei Zeilen ersetzen nicht den *Blick* ins Original",
+      "body": "Geht's um Unterschrift, Geld oder Gesundheit: Original öffnen. Die drei Zeilen sagen dir, *dass* du handeln musst – nicht, was du unterschreibst."
+    }
+  ],
+  "caption": "Eine lange Mitteilung ist selten das Problem. Das Problem ist der eine Satz mit der Frist, der irgendwo zwischen Dank und Grußformel steckt.\n\n„Termin, Mitbringen, Frist“ passt nicht nur für Schule und Verein. Hausverwaltung, Pfarrblatt, Gemeinde-Newsletter – überall, wo eine Aufgabe im Fließtext versteckt ist.\n\nNoch ein Gedanke zum Datenschutz: In Elternpost stehen oft Namen anderer Kinder. Kürz die vor dem Einfügen raus – für die drei Zeilen brauchst du sie nicht.\n\nWelche Info hat sich bei dir zuletzt am besten in einer Mitteilung versteckt?",
+  "hashtags": [
+    "Elternbrief",
+    "FamilienOrganisation",
+    "GeminiSkills",
+    "ChatGPTProjekte",
+    "KIimAlltag"
+  ],
+  "review_notes": "Dreh angepasst: Die Idee ging von „Gem bzw. Custom GPT“ aus. Laut Recherche (Stand 22.11.2026) werden Gems bei privaten Google-Konten (18+) seit 17.11.2026 zu Skills und sind nur noch lesbar, am 17.12.2026 werden sie entfernt. Workspace-Business-Konten folgen ab März 2027, Education ab Juni 2027. Bei Unter-18-Konten passiert das später. Laut Google-Hilfe gibt es Skills ohne Google-AI-Abo. Neue Custom GPTs lassen sich auf privaten ChatGPT-Konten (Free, Go, Plus, Pro) nicht mehr erstellen. Als Ersatz empfiehlt OpenAI Projekte mit Projektanweisungen, laut Help Center in jedem passenden Plan enthalten. Deshalb nennt der Post jetzt Gemini-Skills und ChatGPT-Projekte. Bitte prüfen: 1) Die deutschen Menünamen („Skills“, „manuell erstellen“, „Projekteinstellungen“) habe ich nicht in der deutschen Oberfläche bestätigt. 2) Ob Skills in DE/AT/CH schon für alle privaten Konten freigeschaltet sind, ist nicht ausdrücklich bestätigt. 3) „Seit 17. November eingefroren“ gilt nur für private Konten ab 18. Wird später als Mitte Dezember gepostet, die Formulierung anpassen (dann sind Gems ganz weg). 4) Slide 4 verspricht „Foto vom Zettel hochladen“ – kurz testen, ob Bild-Upload in einem Gemini-Skill und in einem ChatGPT-Projekt (auch im Free-Plan) funktioniert und die Anweisung dabei greift. Quelle: https://support.google.com/gemini/answer/18560919?hl=en | Quelle: https://support.google.com/gemini/answer/17094296?hl=en-PW&ref_topic=17122162 | Quelle: https://help.openai.com/en/articles/8554407-gpts-in-chatgpt | Quelle: https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq | Quelle: https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+  "caption_final": "Eine lange Mitteilung ist selten das Problem. Das Problem ist der eine Satz mit der Frist, der irgendwo zwischen Dank und Grußformel steckt.\n\n„Termin, Mitbringen, Frist“ passt nicht nur für Schule und Verein. Hausverwaltung, Pfarrblatt, Gemeinde-Newsletter – überall, wo eine Aufgabe im Fließtext versteckt ist.\n\nNoch ein Gedanke zum Datenschutz: In Elternpost stehen oft Namen anderer Kinder. Kürz die vor dem Einfügen raus – für die drei Zeilen brauchst du sie nicht.\n\nWelche Info hat sich bei dir zuletzt am besten in einer Mitteilung versteckt?\n\nErstellt mit KI-Unterstützung.\n\n#Elternbrief #FamilienOrganisation #GeminiSkills #ChatGPTProjekte #KIimAlltag",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 34.8,
+    "thumb_offset_ms": 1733,
+    "music": null
+  }
+}

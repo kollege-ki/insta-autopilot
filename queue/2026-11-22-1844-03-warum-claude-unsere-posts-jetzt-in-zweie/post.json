@@ -1,0 +1,68 @@
+{
+  "pillar": "making_of",
+  "format": "fehler",
+  "title": "Warum Claude unsere Posts jetzt in Zweier-Paketen schreibt",
+  "slides": [
+    {
+      "headline": "Unsere KI darf nur noch *zwei* Posts auf einmal schreiben",
+      "body": "Schuld ist ein Fehler aus dem allerersten Lauf – und du machst ihn vermutlich auch."
+    },
+    {
+      "headline": "Der erste Lauf ging *mehrmals* schief",
+      "body": "Diese Page betreibt sich selbst: Claude textet, ein Script gestaltet, GitHub postet. Am 11.11. scheiterte der erste *Content-Lauf* gleich mehrmals."
+    },
+    {
+      "headline": "Drei Gründe – zwei davon *langweilig*",
+      "body": "Die ersten beiden waren schnell behoben. Der dritte war spannender.",
+      "box": "Claude-Key ohne Workspace → behoben\nTool-Format nicht unterstützt → angepasst\nAntworten zu lang → ?"
+    },
+    {
+      "headline": "Wir haben zu viel *bestellt*",
+      "body": "Zu viel Inhalt für eine einzige Antwort. Jede KI-Antwort hat eine *Längengrenze*. Ist sie erreicht, ist Schluss – auch mitten im Text."
+    },
+    {
+      "headline": "Kleiner schneiden statt *aufrüsten*",
+      "body": "Jetzt schreibt Claude die Posts in *Zweier-Paketen*. Gleiche Aufgabe, gleiche Regeln – nur in Portionen, die sicher durchpassen."
+    },
+    {
+      "headline": "Dir passiert das auch – nur *leiser*",
+      "body": "20 Produkttexte, ein Handbuch, eine lange Übersetzung. Im Chat bricht selten etwas sichtbar ab. Prüf mal: Werden die *letzten Texte* kürzer als die ersten?"
+    },
+    {
+      "headline": "So bestellst du in *Paketen*",
+      "body": "Nach dem ersten Paket schärfst du die Regeln nach – nicht erst nach Text 12.",
+      "box": "Wir schreiben 12 Produkttexte.\nProdukte: [Liste]\nRegeln: [Ton, Länge, No-Gos]\nSchreib jetzt nur Nr. 1 und 2.\nDann stopp und warte auf mein „weiter“.\nHalte in jedem Paket dieselben Regeln ein.\nÄndere ich eine Regel, gilt sie ab dem nächsten Paket."
+    },
+    {
+      "headline": "Auch dieser Post kam im *Doppelpack*",
+      "body": "Seit dem 11.11. entsteht jeder Post hier zusammen mit einem zweiten. Zwei Posts, ein *Paket* – und ein Mensch, der beide freigibt."
+    }
+  ],
+  "caption": "Wenn eine KI-Aufgabe scheitert, greift man reflexartig zum größeren Modell. Bei uns war die Lösung kleiner: weniger auf einmal verlangen.\n\nFairerweise: Am Tag danach haben wir trotzdem das Modell gewechselt, von Sonnet auf Opus. Die Zweier-Pakete sind geblieben. Ein größeres Modell schreibt besser – aber nicht unbedingt länger am Stück.\n\nFaustregel für die Paketgröße: so klein, dass du nach jedem Paket noch Lust hast, wirklich zu prüfen. Wenn du nur noch drüberscrollst, war das Paket zu groß.\n\nWas war die größte Aufgabe, die du einer KI auf einmal gegeben hast – und hat sie bis zum Ende durchgehalten?",
+  "hashtags": [
+    "buildinpublic",
+    "claudeai",
+    "kiworkflow",
+    "kiautomatisierung",
+    "promptengineering"
+  ],
+  "review_notes": "1) Fehlerursachen (Key ohne Workspace, Tool-Format, zu lange Antworten) und Zweier-Pakete stammen aus dem Journal vom 11.11. 2) Modellwechsel Sonnet → Opus aus den Stats (12.11.), Modellnamen dort als claude-sonnet-5-5 / claude-opus-5-5 – bitte prüfen, ob die Namen so stimmen. 3) Slide 8 behauptet: Seit dem 11.11. entsteht jeder Post zusammen mit einem zweiten, und ein Mensch gibt frei. Prüfen, ob das für alle Läufe seitdem gilt (Freigabe laut Journal wöchentlich per Pull Request). 4) 'Längengrenze' bewusst ohne Zahl, weil Limits sich ändern. 5) 'Zwei Posts, ein Paket' setzt voraus, dass die Pipeline pro Paket einen Aufruf macht – kurz prüfen. 6) Slide 4 deutet 'zu lange Antworten' (Journal) als erreichte Längengrenze der Ausgabe – bestätigen, dass es wirklich das Ausgabe-Limit war und nicht z. B. ein Timeout.",
+  "caption_final": "Wenn eine KI-Aufgabe scheitert, greift man reflexartig zum größeren Modell. Bei uns war die Lösung kleiner: weniger auf einmal verlangen.\n\nFairerweise: Am Tag danach haben wir trotzdem das Modell gewechselt, von Sonnet auf Opus. Die Zweier-Pakete sind geblieben. Ein größeres Modell schreibt besser – aber nicht unbedingt länger am Stück.\n\nFaustregel für die Paketgröße: so klein, dass du nach jedem Paket noch Lust hast, wirklich zu prüfen. Wenn du nur noch drüberscrollst, war das Paket zu groß.\n\nWas war die größte Aufgabe, die du einer KI auf einmal gegeben hast – und hat sie bis zum Ende durchgehalten?\n\nErstellt mit KI-Unterstützung.\n\n#buildinpublic #claudeai #kiworkflow #kiautomatisierung #promptengineering",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 34.8,
+    "thumb_offset_ms": 1666,
+    "music": null
+  }
+}

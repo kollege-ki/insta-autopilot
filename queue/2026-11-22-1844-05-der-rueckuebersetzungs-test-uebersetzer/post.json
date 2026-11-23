@@ -1,0 +1,68 @@
+{
+  "pillar": "workflow",
+  "format": "zweckfremd",
+  "title": "Der Rückübersetzungs-Test: Übersetzer-Tool als Klarheits-Prüfer",
+  "slides": [
+    {
+      "headline": "Schick deinen Text nach England. Was kommt *zurück*?",
+      "body": "Ein Übersetzer-Tool ist der strengste Leser, den du hast."
+    },
+    {
+      "headline": "Der Übersetzer muss sich *entscheiden*",
+      "body": "Lässt dein Satz zwei Lesarten zu, nimmt das Tool eine davon. Rückübersetzt siehst du, welche. Dein Leser macht es genauso – nur still."
+    },
+    {
+      "headline": "Hin, zurück, *nebeneinander*",
+      "body": "Text in DeepL oder Google Übersetzer: Deutsch → Englisch. Das Englische kopieren, zurück ins Deutsche. Dann Original und Rückkehrer Absatz für Absatz vergleichen."
+    },
+    {
+      "headline": "Aus „zeitnah“ wird plötzlich *„umgehend“*",
+      "body": "So kann's aussehen. Das Tool hat nicht falsch übersetzt – dein Original hat ihm zu viel Spielraum gelassen.",
+      "box": "Original: Die Freigabe erfolgt zeitnah nach Abstimmung.\nZurück: Die Genehmigung wird umgehend nach Absprache erteilt.\n→ Wann genau? Wer stimmt mit wem ab?"
+    },
+    {
+      "headline": "Woran du *Wackelstellen* erkennst",
+      "body": "Nicht jede Abweichung ist ein Problem. Diese schon:",
+      "box": "Wort ausgetauscht → war dehnbar\nWer/wem vertauscht → Bezug unklar\nSatz zerlegt, umgebaut → zu verschachtelt\n„nicht“ gewandert → Verneinung doppeldeutig\nSynonym, gleicher Sinn → ignorieren"
+    },
+    {
+      "headline": "Erst jetzt darf die KI *ran*",
+      "body": "Markier die Wackelstellen mit eckigen Klammern. Dann diesen Prompt in ChatGPT, Claude oder Gemini:",
+      "box": "Stellen in [ ] haben bei einer Rückübersetzung ihre Bedeutung verändert. Formuliere NUR diese Stellen eindeutig neu. Pro Stelle: zwei Varianten, jeweils mit der Lesart, die sie festlegt. Den Rest des Textes nicht anfassen.\n\nText: [hier einfügen]"
+    },
+    {
+      "headline": "Warum nicht gleich alles *umschreiben*?",
+      "body": "Dann klingt der ganze Text nach KI – und die unklare Stelle versteckt sich hinter glatteren Sätzen. So bleibt deine Stimme. Nur die Wackler fallen."
+    },
+    {
+      "headline": "Was der Test *übersieht*",
+      "body": "Mehrdeutigkeiten, die es auf Englisch genauso gibt, kommen unverändert zurück. Unverändert heißt: unauffällig – nicht garantiert klar. Wichtiger Text? Zweite Runde über *Französisch*."
+    }
+  ],
+  "caption": "Korrekturlesen findet Tippfehler. Missverständnisse findet es selten – du weißt ja, was du gemeint hast.\n\nEin Übersetzer weiß das nicht. Genau darum taugt er als Testleser ohne Vorwissen. Die KI kommt erst danach – mit einem engen Auftrag statt „mach das besser“.\n\nAm meisten bringt der Test bei Texten, nach denen andere handeln: Aufgabenverteilungen, Anleitungen, Briefings. Vertrauliches nur in Tools, die dein Betrieb freigegeben hat – sonst einen entschärften Auszug testen.\n\nWelcher Satz aus deinem Arbeitsalltag würde den Test nicht überstehen?",
+  "hashtags": [
+    "KlarSchreiben",
+    "Rückübersetzung",
+    "SchreibenMitKI",
+    "KIimBüro"
+  ],
+  "review_notes": "Das Beispiel auf Slide 4 ist illustrativ („So kann's aussehen“), kein echter Tool-Output. Am besten vor dem Posten selbst durch DeepL/Google Übersetzer schicken und, falls das Ergebnis abweicht, das echte Ergebnis einsetzen oder die Formulierung so lassen. Es werden keine Features, Preise oder Limits der Übersetzer behauptet, nur die Tool-Namen genannt. Optional: den Prompt auf Slide 6 einmal mit einem markierten Beispieltext testen, ob die Ausgabe wirklich nur die Klammer-Stellen behandelt.",
+  "caption_final": "Korrekturlesen findet Tippfehler. Missverständnisse findet es selten – du weißt ja, was du gemeint hast.\n\nEin Übersetzer weiß das nicht. Genau darum taugt er als Testleser ohne Vorwissen. Die KI kommt erst danach – mit einem engen Auftrag statt „mach das besser“.\n\nAm meisten bringt der Test bei Texten, nach denen andere handeln: Aufgabenverteilungen, Anleitungen, Briefings. Vertrauliches nur in Tools, die dein Betrieb freigegeben hat – sonst einen entschärften Auszug testen.\n\nWelcher Satz aus deinem Arbeitsalltag würde den Test nicht überstehen?\n\nErstellt mit KI-Unterstützung.\n\n#KlarSchreiben #Rückübersetzung #SchreibenMitKI #KIimBüro",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 34.9,
+    "thumb_offset_ms": 1566,
+    "music": null
+  }
+}

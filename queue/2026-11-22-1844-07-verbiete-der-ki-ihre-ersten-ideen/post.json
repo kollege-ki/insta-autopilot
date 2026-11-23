@@ -1,0 +1,66 @@
+{
+  "pillar": "prompt",
+  "format": "these",
+  "title": "Verbiete der KI ihre ersten Ideen",
+  "slides": [
+    {
+      "headline": "Die erste Idee der KI gehört *gestrichen*",
+      "body": "Gerade die, die sofort gut klingt."
+    },
+    {
+      "headline": "Die erste Antwort ist der *Durchschnitt*",
+      "body": "Ein Sprachmodell liefert zuerst das Wahrscheinlichste. Also das, was Tausende schon geschrieben haben. Klingt rund – und ist genau deshalb *austauschbar*."
+    },
+    {
+      "headline": "„Sei kreativer“ bringt *wenig*",
+      "body": "Die KI weiß nicht, was für dich naheliegend ist. Also liefert sie dieselben Ideen – nur mit mehr *Adjektiven*."
+    },
+    {
+      "headline": "Lass sie das *Offensichtliche* zuerst aufschreiben",
+      "body": "Fünf naheliegende Ideen, schwarz auf weiß. Erst wenn sie dastehen, kann die KI gezielt davon *weg*."
+    },
+    {
+      "headline": "Der Prompt zum *Kopieren*",
+      "box": "Thema: [dein Thema]\n1. Schreib die 5 naheliegendsten Ideen auf – die, die jeder hätte.\n2. Streich alle 5. Auch Varianten davon sind tabu.\n3. Liefere 3 neue Ideen, die keiner der 5 ähneln.\n4. Sag pro Idee in einem Satz, was daran unerwartet ist."
+    },
+    {
+      "headline": "Die Streichliste verrät dir *mehr*",
+      "body": "Steht deine eigene Idee bei den fünf? Dann hätte sie jeder gehabt. Unbequem – aber besser jetzt als nach dem *Veröffentlichen*."
+    },
+    {
+      "headline": "Klappt weit über *Content* hinaus",
+      "box": "Geschenkidee → 5 Klassiker streichen\nProjektname → 5 Wortspiele streichen\nWorkshop-Titel → 5 Buzzwords streichen\nRede-Einstieg → 5 Zitate streichen"
+    },
+    {
+      "headline": "Auch dieser Post ging durch ein *Sieb*",
+      "body": "Hinter Kollege KI sammelt Claude pro Post 4 Ideen und schreibt nur die beste aus. „5 KI-Tools“-Listen sind von vornherein *verboten*."
+    }
+  ],
+  "caption": "Die drei neuen Ideen sind nicht automatisch besser. Nur seltener. Ob eine davon trägt, entscheidest weiterhin du – die KI räumt dir nur das Offensichtliche aus dem Weg.\n\nWirken die drei neuen auch noch brav? Lass sie ebenfalls streichen und frag nach drei weiteren. Mit jeder Runde rückst du weiter vom Durchschnitt weg – ob das Ergebnis brauchbar ist, prüfst du selbst.\n\nUnd heb die Streichliste auf. Sie zeigt dir, womit dein Thema schon überall bespielt wird.\n\nWelche Idee hat dir die KI zuletzt geliefert, die du schon zehnmal irgendwo gesehen hattest?",
+  "hashtags": [
+    "promptengineering",
+    "kipromptsdeutsch",
+    "kreativitaet",
+    "claudeai",
+    "chatgptdeutsch"
+  ],
+  "review_notes": "Slide 8: Laut Journal sammelt Claude pro Post 4 Ideen und schreibt nur die beste aus – das ist belegt. Dass die Pipeline ausdrücklich die naheliegendsten Ideen zuerst aufschreibt und streicht, steht NICHT im Journal, deshalb kommt das im Post nicht vor. Dass „5 KI-Tools“-Listen verboten sind, stammt aus den Vorgaben der Pipeline (verbotene Themen) – bitte bestätigen, dass das öffentlich so gesagt werden darf. Keine Tool-Preise, -Versionen oder -Features genannt. Slide 2 („liefert zuerst das Wahrscheinlichste“) ist eine bewusst vereinfachte Erklärung, wie Sprachmodelle arbeiten – bei Bedarf prüfen, ob sie so stehen bleiben soll.",
+  "caption_final": "Die drei neuen Ideen sind nicht automatisch besser. Nur seltener. Ob eine davon trägt, entscheidest weiterhin du – die KI räumt dir nur das Offensichtliche aus dem Weg.\n\nWirken die drei neuen auch noch brav? Lass sie ebenfalls streichen und frag nach drei weiteren. Mit jeder Runde rückst du weiter vom Durchschnitt weg – ob das Ergebnis brauchbar ist, prüfst du selbst.\n\nUnd heb die Streichliste auf. Sie zeigt dir, womit dein Thema schon überall bespielt wird.\n\nWelche Idee hat dir die KI zuletzt geliefert, die du schon zehnmal irgendwo gesehen hattest?\n\nErstellt mit KI-Unterstützung.\n\n#promptengineering #kipromptsdeutsch #kreativitaet #claudeai #chatgptdeutsch",
+  "images": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ],
+  "reel": {
+    "file": "reel.mp4",
+    "seconds": 34.8,
+    "thumb_offset_ms": 1233,
+    "music": null
+  }
+}
