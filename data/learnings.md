@@ -1,4 +1,4 @@
-# Learnings (Stand 25.11.2026, 9 ausgewertete Posts)
+# Learnings (Stand 26.11.2026, 9 ausgewertete Posts)
 
 ## Uhrzeiten (Ø Reichweite, Anzahl)
 - manuell: 0 (2)
